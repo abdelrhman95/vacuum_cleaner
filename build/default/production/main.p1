@@ -1,11 +1,20 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"1375 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1375: extern volatile unsigned char TRISB __attribute__((address(0x086)));
-[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
-"216
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 216: extern volatile unsigned char PORTB __attribute__((address(0x006)));
-[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
+"32 main.c
+[c E867 0 1 2 .. ]
+[n E867 . SSD_FIRST SSD_SECONED SSD_THIRD  ]
+"36 ./SSD.h
+[; ;./SSD.h: 36: void SSD_Init(tSSD ssd);
+[v _SSD_Init `(v ~T0 @X0 0 ef1`E867 ]
+"37
+[; ;./SSD.h: 37: void SSD_Update(void);
+[v _SSD_Update `(v ~T0 @X0 0 ef ]
+"39 main.c
+[c E876 0 1 2 3 .. ]
+[n E876 . SSD_Low SSD_Mid SSD_High SSD_NULL  ]
+"39 ./SSD.h
+[; ;./SSD.h: 39: void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol);
+[v _SSD_SetValue `(v ~T0 @X0 0 ef2`E867`E876 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -186,43 +195,48 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"14 main.c
-[; ;main.c: 14: 
+"17 main.c
+[; ;main.c: 17: }
 [p x FOSC = XT ]
-"15
-[; ;main.c: 15: }
-[p x WDTE = OFF ]
-"16
-[p x PWRTE = OFF ]
-"17
-[p x BOREN = OFF ]
 "18
-[p x LVP = OFF ]
+[p x WDTE = OFF ]
 "19
-[p x CPD = OFF ]
+[p x PWRTE = OFF ]
 "20
-[p x WRT = OFF ]
+[p x BOREN = OFF ]
 "21
+[p x LVP = OFF ]
+"22
+[p x CPD = OFF ]
+"23
+[p x WRT = OFF ]
+"24
 [p x CP = OFF ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"27
+"30
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"29
-[e = _TRISB -> -> 0 `i `uc ]
-"30
-[e = _PORTB -> -> 0 `i `uc ]
-"31
-[e :U 97 ]
 "32
+[e ( _SSD_Init (1 . `E867 0 ]
+"33
+[e ( _SSD_Init (1 . `E867 1 ]
+"34
+[e ( _SSD_Init (1 . `E867 2 ]
+"36
+[e :U 97 ]
+"37
 {
-"35
+"38
+[e ( _SSD_Update ..  ]
+"39
+[e ( _SSD_SetValue (2 , . `E867 1 . `E876 1 ]
+"40
 }
 [e :U 96 ]
 [e $U 97  ]
 [e :U 98 ]
-"38
+"43
 [e :UE 95 ]
 }

@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/vaccum_cleaner2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=vaccum_cleaner2.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=vaccumcleaner2.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/vacuum_cleaner.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=vacuum_cleaner.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=vacuumcleaner/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/vaccumcleaner2.x/bin
+makeDirectory ${TMPDIR}/vacuumcleaner/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/vaccumcleaner2.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/vacuumcleaner.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/vaccumcleaner2.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/vacuumcleaner.tar *
 checkReturnCode
 
 # Cleanup

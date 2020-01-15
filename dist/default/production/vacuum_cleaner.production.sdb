@@ -1,0 +1,139 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"32 F:\Embedded systems\vacuum_cleaner\main.c
+[e E867 . `uc
+SSD_FIRST 0
+SSD_SECONED 1
+SSD_THIRD 2
+]
+"39
+[e E876 . `uc
+SSD_Low 0
+SSD_Mid 1
+SSD_High 2
+SSD_NULL 3
+]
+"27 F:\Embedded systems\vacuum_cleaner\SW.c
+[e E857 . `uc
+SW_RELEASED 0
+SW_PRE_PRESSED 1
+SW_PRESSED 2
+SW_PRE_RELEASED 3
+]
+"40
+[e E852 . `uc
+SW_PLUS 0
+SW_MINUS 1
+SW_PRE 2
+]
+"23 F:\Embedded systems\vacuum_cleaner\SSD.c
+[e E852 . `uc
+SSD_FIRST 0
+SSD_SECONED 1
+SSD_THIRD 2
+]
+"27
+[e E861 . `uc
+SSD_Low 0
+SSD_Mid 1
+SSD_High 2
+SSD_NULL 3
+]
+"29
+[e E857 . `uc
+SSD_OFF 0
+SSD_ON 1
+]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"30 F:\Embedded systems\vacuum_cleaner\main.c
+[v _main main `(v  1 e 1 0 ]
+"33 F:\Embedded systems\vacuum_cleaner\SSD.c
+[v _SSD_Init SSD_Init `(v  1 e 1 0 ]
+"60
+[v _SSD_Update SSD_Update `(v  1 e 1 0 ]
+"89
+[v _SSD_SetValue SSD_SetValue `(v  1 e 1 0 ]
+"120
+[v _SSD_SetState SSD_SetState `(v  1 e 1 0 ]
+"148
+[v _SSD_Out SSD_Out `(v  1 s 1 SSD_Out ]
+"216 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"340
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+"1375
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1499
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"14 F:\Embedded systems\vacuum_cleaner\SSD.c
+[v _SSD_Data SSD_Data `[4]uc  1 s 4 SSD_Data ]
+"23
+[v _SSD_current SSD_current `E852  1 s 1 SSD_current ]
+"27
+[v _SSD_Values SSD_Values `[3]E861  1 s 3 SSD_Values ]
+"29
+[v _SSD_DotState SSD_DotState `uc  1 s 1 SSD_DotState ]
+[s S56 . 3 `[2]uc 1 sw_samples 2 0 `E857 1 sw_state 1 2 ]
+"27 F:\Embedded systems\vacuum_cleaner\SW.c
+[v _SWs_Info SWs_Info `[3]S56  1 s 9 SWs_Info ]
+"30 F:\Embedded systems\vacuum_cleaner\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"43
+} 0
+"60 F:\Embedded systems\vacuum_cleaner\SSD.c
+[v _SSD_Update SSD_Update `(v  1 e 1 0 ]
+{
+"62
+[v SSD_Update@SSD_counter SSD_counter `ui  1 s 2 SSD_counter ]
+"86
+} 0
+"89
+[v _SSD_SetValue SSD_SetValue `(v  1 e 1 0 ]
+{
+[v SSD_SetValue@ssd ssd `E852  1 a 1 wreg ]
+[v SSD_SetValue@ssd ssd `E852  1 a 1 wreg ]
+[v SSD_SetValue@ssd_symbol ssd_symbol `E861  1 p 1 0 ]
+"92
+[v SSD_SetValue@ssd ssd `E852  1 a 1 2 ]
+"94
+} 0
+"33
+[v _SSD_Init SSD_Init `(v  1 e 1 0 ]
+{
+[v SSD_Init@ssd ssd `E852  1 a 1 wreg ]
+[v SSD_Init@ssd ssd `E852  1 a 1 wreg ]
+[v SSD_Init@ssd ssd `E852  1 a 1 10 ]
+"58
+} 0
+"148
+[v _SSD_Out SSD_Out `(v  1 s 1 SSD_Out ]
+{
+[v SSD_Out@ssd ssd `E852  1 a 1 wreg ]
+[v SSD_Out@ssd ssd `E852  1 a 1 wreg ]
+[v SSD_Out@ssd_symbol ssd_symbol `E861  1 p 1 4 ]
+"152
+[v SSD_Out@ssd ssd `E852  1 a 1 5 ]
+"163
+} 0
+"120
+[v _SSD_SetState SSD_SetState `(v  1 e 1 0 ]
+{
+[v SSD_SetState@ssd ssd `E852  1 a 1 wreg ]
+[v SSD_SetState@ssd ssd `E852  1 a 1 wreg ]
+[v SSD_SetState@state state `E857  1 p 1 0 ]
+[v SSD_SetState@ssd ssd `E852  1 a 1 3 ]
+"139
+} 0

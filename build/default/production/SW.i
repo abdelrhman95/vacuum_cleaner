@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "SW.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,10 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-
-
-
+# 1 "SW.c" 2
+# 1 "./Main.h" 1
+# 13 "./Main.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -1723,17 +1722,14 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 4 "main.c" 2
-
-
-# 1 "./Main.h" 1
+# 13 "./Main.h" 2
 # 60 "./Main.h"
 typedef unsigned int tWord;
 typedef unsigned char tByte;
-# 6 "main.c" 2
+# 1 "SW.c" 2
 
 # 1 "./Port.h" 1
-# 7 "main.c" 2
+# 2 "SW.c" 2
 
 # 1 "./SW.h" 1
 # 18 "./SW.h"
@@ -1756,76 +1752,140 @@ typedef enum
 void SW_Init(void);
 tSW_State SW_GetState(tSW sw);
 void SW_Update(void);
-# 8 "main.c" 2
-
-# 1 "./SSD.h" 1
-# 13 "./SSD.h"
-typedef enum
+# 3 "SW.c" 2
+# 20 "SW.c"
+typedef struct
 {
-    SSD_FIRST,
-    SSD_SECONED,
-    SSD_THIRD
-}tSSD;
+    tByte sw_samples[(2)];
+    tSW_State sw_state;
+}tSW_Info;
 
 
-typedef enum
+static tSW_Info SWs_Info[(3)];
+
+void SW_Init(void)
 {
-    SSD_OFF = 0,
-    SSD_ON = 1
-}tSSD_State;
-
-
-typedef enum
-{
-    SSD_Low = 0,
-    SSD_Mid,
-    SSD_High,
-    SSD_NULL
-}tSSD_Symbol;
-
-void SSD_Init(tSSD ssd);
-void SSD_Update(void);
-
-void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol);
-
-tSSD_Symbol SSD_GetValue(tSSD ssd);
-tSSD_State SSD_GetState(tSSD ssd);
-void SSD_SetState(tSSD ssd, tSSD_State state);
-
-void SSD_SetDotState(tByte state);
-# 9 "main.c" 2
+    tByte index = 0;
 
 
 
+    ((((TRISB))) = (((TRISB)) & (~(1 << ((0)))))|((1) << ((0))));
+    ((((TRISB))) = (((TRISB)) & (~(1 << ((1)))))|((1) << ((1))));
+    ((((TRISB))) = (((TRISB)) & (~(1 << ((2)))))|((1) << ((2))));
 
 
-
-
-
-#pragma config FOSC = XT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config BOREN = OFF
-#pragma config LVP = OFF
-#pragma config CPD = OFF
-#pragma config WRT = OFF
-#pragma config CP = OFF
-
-
-
-
-
-void main(void) {
-
-    SSD_Init(SSD_FIRST);
-    SSD_Init(SSD_SECONED);
-    SSD_Init(SSD_THIRD);
-
-    while(1)
+    for (index = SW_PLUS; index < (3); index++)
     {
-      SSD_Update();
-      SSD_SetValue(SSD_SECONED, SSD_Mid);
+
+        SWs_Info[index].sw_samples[0] = (1);
+        SWs_Info[index].sw_samples[1] = (1);
+
+
+        SWs_Info[index].sw_state = SW_RELEASED;
+
     }
 
+}
+
+
+tSW_State SW_GetState(tSW sw)
+{
+
+
+    return SWs_Info[sw].sw_state;
+
+}
+
+
+void SW_Update(void)
+{
+    static tWord SW_counter = 0;
+    tByte index = 0;
+
+
+    SW_counter += (5);
+
+    if (SW_counter != (20)){
+        return;
+    }
+
+    SW_counter = 0;
+
+
+    for (index = SW_PLUS; index < (3); index++)
+    {
+
+
+        SWs_Info[index].sw_samples[0] = SWs_Info[index].sw_samples[1];
+
+        if (index == SW_PLUS)
+        {
+            SWs_Info[index].sw_samples[1] = (((((PORTB))) & (1 << ((0)))) >> (((0))));
+        } else if (index == SW_MINUS)
+        {
+            SWs_Info[index].sw_samples[1] = (((((PORTB))) & (1 << ((1)))) >> (((1))));
+        } else if (index == SW_PRE)
+        {
+            SWs_Info[index].sw_samples[1] = (((((PORTB))) & (1 << ((2)))) >> (((2))));
+        } else
+        {
+
+        }
+
+
+
+
+        switch(SWs_Info[index].sw_state)
+        {
+
+            case SW_RELEASED:
+
+                if ((SWs_Info[index].sw_samples[0] == (0)) &&
+                    (SWs_Info[index].sw_samples[1] == (0)))
+                {
+                    SWs_Info[index].sw_state = SW_PRE_PRESSED;
+                } else
+                {
+
+                }
+                break;
+            case SW_PRE_PRESSED:
+
+                if (SWs_Info[index].sw_samples[1] == (0))
+                {
+                    SWs_Info[index].sw_state = SW_PRESSED;
+                } else
+                {
+
+                }
+                break;
+            case SW_PRESSED:
+
+                if ((SWs_Info[index].sw_samples[0] == (1)) &&
+                    (SWs_Info[index].sw_samples[1] == (1)))
+                {
+                    SWs_Info[index].sw_state = SW_PRE_RELEASED;
+                }
+                else
+                {
+
+                }
+                break;
+            case SW_PRE_RELEASED:
+
+                if (SWs_Info[index].sw_samples[1] == (1))
+                {
+                    SWs_Info[index].sw_state = SW_RELEASED;
+                } else
+                {
+
+                }
+                break;
+
+            default:
+                break;
+        }
+
+    }
 
 }

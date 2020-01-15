@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\vaccum_cleaner2.X.production.hex">
+  <executable name="dist/default/production\vacuum_cleaner.production.hex">
     <memory name="program">
       <units>words</units>
       <length>8192</length>
-      <used>17</used>
-      <free>8175</free>
+      <used>318</used>
+      <free>7874</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>368</length>
-      <used>2</used>
-      <free>366</free>
+      <used>35</used>
+      <free>333</free>
     </memory>
   </executable>
 </project>

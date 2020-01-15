@@ -1,7 +1,7 @@
 /*
- * File:   
- * Author: 
- * Comments:
+ * File:   Main.h
+ * Author: Abdelrhman Sayed
+ * Comments:File contains GPIO Configurations 
  * Revision history: 
  */
 
@@ -10,8 +10,9 @@
 #ifndef __MAIN_H
 #define	__MAIN_H
 
-#include <xc.h> // include processor files - each processor file is guarded.  
+#include<xc.h>
 
+#define TMR_TICK_MS (5)
 /* Fill missing code below */
 /* GPIO definitions */
 /* GPIO Pins */
@@ -57,5 +58,6 @@
 
 /* Standard data types */
 typedef unsigned int tWord;
-#endif	/* XC_HEADER_TEMPLATE_H */
+typedef unsigned char tByte;
+#endif	
 

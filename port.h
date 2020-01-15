@@ -1,78 +1,57 @@
-/* Microchip Technology Inc. and its subsidiaries.  You may use this software 
- * and any derivatives exclusively with Microchip products. 
- * 
- * THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS".  NO WARRANTIES, WHETHER 
- * EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED 
- * WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A 
- * PARTICULAR PURPOSE, OR ITS INTERACTION WITH MICROCHIP PRODUCTS, COMBINATION 
- * WITH ANY OTHER PRODUCTS, OR USE IN ANY APPLICATION. 
- *
- * IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
- * INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
- * WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS 
- * BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE.  TO THE 
- * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS 
- * IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF 
- * ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
- *
- * MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE 
- * TERMS. 
- */
+#ifndef __PORT_H__
+#define __PORT_H__
 
-/* 
- * File:   
- * Author: 
- * Comments:
- * Revision history: 
- */
+#include "Main.h"
 
-// This is a guard condition so that contents of this file are not included
-// more than once.  
-#ifndef XC_HEADER_TEMPLATE_H
-#define	XC_HEADER_TEMPLATE_H
 
-#include <xc.h> // include processor files - each processor file is guarded.  
+/* Leds' pins */
+#define LED_1_PORT_DR   (GPIO_PORTB_DATA)
+#define LED_1_PORT_CR   (GPIO_PORTB_CONTROL)
+#define LED_1_PIN       (GPIO_PIN_0)
 
-// TODO Insert appropriate #include <>
+#define LED_2_PORT_DR   (GPIO_PORTB_DATA)
+#define LED_2_PORT_CR   (GPIO_PORTB_CONTROL)
+#define LED_2_PIN       (GPIO_PIN_1)
 
-// TODO Insert C++ class definitions if appropriate
+#define LED_3_PORT_DR   (GPIO_PORTB_DATA)
+#define LED_3_PORT_CR   (GPIO_PORTB_CONTROL)
+#define LED_3_PIN       (GPIO_PIN_2)
 
-// TODO Insert declarations
+#define LED_4_PORT_DR   (GPIO_PORTB_DATA)
+#define LED_4_PORT_CR   (GPIO_PORTB_CONTROL)
+#define LED_4_PIN       (GPIO_PIN_3)
 
-// Comment a function and leverage automatic documentation with slash star star
-/**
-    <p><b>Function prototype:</b></p>
-  
-    <p><b>Summary:</b></p>
+/* Fill missing code below */
+/* Switches */
+#define SW_PLUS_PORT_DR     (GPIO_PORTB_DATA)
+#define SW_PLUS_PORT_CR     (GPIO_PORTB_CONTROL)
+#define SW_PLUS_PIN         (GPIO_PIN_0)
 
-    <p><b>Description:</b></p>
+#define SW_MINUS_PORT_DR    (GPIO_PORTB_DATA)
+#define SW_MINUS_PORT_CR    (GPIO_PORTB_CONTROL)
+#define SW_MINUS_PIN        (GPIO_PIN_1)
 
-    <p><b>Precondition:</b></p>
+/*pressure switch */
+#define SW_PRE_PORT_DR      (GPIO_PORTB_DATA)
+#define SW_PRE_PORT_CR      (GPIO_PORTB_CONTROL)
+#define SW_PRE_PIN          (GPIO_PIN_2)
 
-    <p><b>Parameters:</b></p>
+/* SSD */
+#define SSD_DATA_PORT_DR        (GPIO_PORTD_DATA)
+#define SSD_DATA_PORT_CR        (GPIO_PORTD_CONTROL)
 
-    <p><b>Returns:</b></p>
+#define SSD_FIRST_DR       (GPIO_PORTB_DATA)
+#define SSD_FIRST_CR       (GPIO_PORTB_CONTROL)
+#define SSD_FIRST_PIN      (GPIO_PIN_7)
 
-    <p><b>Example:</b></p>
-    <code>
- 
-    </code>
+#define SSD_SECONED_DR      (GPIO_PORTB_DATA)
+#define SSD_SECONED_CR      (GPIO_PORTB_CONTROL)
+#define SSD_SECONED_PIN     (GPIO_PIN_6)
 
-    <p><b>Remarks:</b></p>
- */
-// TODO Insert declarations or function prototypes (right here) to leverage 
-// live documentation
+#define SSD_THIRD_DR     (GPIO_PORTB_DATA)
+#define SSD_THIRD_CR     (GPIO_PORTB_CONTROL)
+#define SSD_THIRD_PIN    (GPIO_PIN_5)
 
-#ifdef	__cplusplus
-extern "C" {
-#endif /* __cplusplus */
 
-    // TODO If C++ is being used, regular C code needs function names to have C 
-    // linkage so the functions can be used by the c code. 
 
-#ifdef	__cplusplus
-}
-#endif /* __cplusplus */
-
-#endif	/* XC_HEADER_TEMPLATE_H */
-
+#endif // __PORT_H__

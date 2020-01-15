@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "SSD.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,10 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-
-
-
+# 1 "SSD.c" 2
+# 1 "./Main.h" 1
+# 13 "./Main.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -1723,40 +1722,14 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 4 "main.c" 2
-
-
-# 1 "./Main.h" 1
+# 13 "./Main.h" 2
 # 60 "./Main.h"
 typedef unsigned int tWord;
 typedef unsigned char tByte;
-# 6 "main.c" 2
+# 1 "SSD.c" 2
 
 # 1 "./Port.h" 1
-# 7 "main.c" 2
-
-# 1 "./SW.h" 1
-# 18 "./SW.h"
-typedef enum
-{
-    SW_PLUS,
-    SW_MINUS,
-    SW_PRE
-}tSW;
-
-
-typedef enum
-{
-    SW_RELEASED,
-    SW_PRE_PRESSED,
-    SW_PRESSED,
-    SW_PRE_RELEASED
-}tSW_State;
-
-void SW_Init(void);
-tSW_State SW_GetState(tSW sw);
-void SW_Update(void);
-# 8 "main.c" 2
+# 2 "SSD.c" 2
 
 # 1 "./SSD.h" 1
 # 13 "./SSD.h"
@@ -1793,39 +1766,155 @@ tSSD_State SSD_GetState(tSSD ssd);
 void SSD_SetState(tSSD ssd, tSSD_State state);
 
 void SSD_SetDotState(tByte state);
-# 9 "main.c" 2
+# 3 "SSD.c" 2
+# 14 "SSD.c"
+static tByte SSD_Data[(4)] =
+{
+    0b00001000,
+    0b01001000,
+    0b01001001,
+    0b00000000
+};
+
+
+static tSSD SSD_current = SSD_FIRST;
 
 
 
+static tSSD_Symbol SSD_Values[(3)] = {SSD_NULL};
+
+static tByte SSD_DotState = SSD_OFF;
+
+static void SSD_Out(tSSD ssd, tSSD_Symbol ssd_symbol);
+
+void SSD_Init(tSSD ssd)
+{
 
 
+    ((((TRISD))) = (((0))? (~0):(0)));
+    SSD_Out(ssd, SSD_NULL);
 
 
-
-#pragma config FOSC = XT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config BOREN = OFF
-#pragma config LVP = OFF
-#pragma config CPD = OFF
-#pragma config WRT = OFF
-#pragma config CP = OFF
-
-
-
-
-
-void main(void) {
-
-    SSD_Init(SSD_FIRST);
-    SSD_Init(SSD_SECONED);
-    SSD_Init(SSD_THIRD);
-
-    while(1)
+    switch (ssd)
     {
-      SSD_Update();
-      SSD_SetValue(SSD_SECONED, SSD_Mid);
+        case SSD_FIRST:
+            ((((TRISB))) = (((TRISB)) & (~(1 << ((7)))))|((0) << ((7))));
+            break;
+        case SSD_SECONED:
+            ((((TRISB))) = (((TRISB)) & (~(1 << ((6)))))|((0) << ((6))));
+            break;
+        case SSD_THIRD:
+            ((((TRISB))) = (((TRISB)) & (~(1 << ((5)))))|((0) << ((5))));
+            break;
+
+        default:
+            break;
     }
+    SSD_SetState(ssd, SSD_OFF);
+
+}
+
+void SSD_Update(void)
+{
+    static tWord SSD_counter = 0;
+
+
+
+    SSD_counter += (5);
+
+    if (SSD_counter != (5)){
+        return;
+    }
+
+    SSD_counter = 0;
+
+
+
+    SSD_Out(SSD_current, SSD_Values[SSD_current]);
+
+    if (SSD_current == SSD_THIRD)
+    {
+        SSD_current = SSD_FIRST;
+    } else
+    {
+        SSD_current++;
+    }
+
+}
+
+
+void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol)
+{
+
+    SSD_Values[ssd] = ssd_symbol;
+
+}
+
+tSSD_State SSD_GetState(tSSD ssd)
+{
+    tSSD_State ret = SSD_OFF;
+
+    switch (ssd)
+    {
+        case SSD_FIRST:
+            ret = (((((PORTB))) & (1 << ((7)))) >> (((7))));
+            break;
+        case SSD_SECONED:
+            ret = (((((PORTB))) & (1 << ((6)))) >> (((6))));
+            break;
+        case SSD_THIRD:
+            ret = (((((PORTB))) & (1 << ((5)))) >> (((5))));
+            break;
+
+        default:
+            break;
+    }
+
+     return ret;
+
+}
+
+void SSD_SetState(tSSD ssd, tSSD_State state)
+{
+
+    switch (ssd)
+    {
+        case SSD_FIRST:
+            ((((PORTB))) = (((PORTB)) & (~(1 << ((7)))))|(state << ((7))));
+            break;
+        case SSD_SECONED:
+            ((((PORTB))) = (((PORTB)) & (~(1 << ((6)))))|(state << ((6))));
+            break;
+        case SSD_THIRD:
+            ((((PORTB))) = (((PORTB)) & (~(1 << ((5)))))|(state << ((5))));
+            break;
+
+        default:
+            break;
+    }
+
+}
+
+
+void SSD_SetDotState(tByte state)
+{
+
+    SSD_DotState = state;
+
+}
+static void SSD_Out(tSSD ssd, tSSD_Symbol ssd_symbol)
+{
+
+
+    SSD_SetState(SSD_FIRST, SSD_OFF);
+    SSD_SetState(SSD_SECONED, SSD_OFF);
+    SSD_SetState(SSD_THIRD, SSD_OFF);
+
+    ((((PORTD))) = (SSD_Data[ssd_symbol]));
+
+
+    SSD_SetState(ssd, SSD_ON);
+
 
 
 }
