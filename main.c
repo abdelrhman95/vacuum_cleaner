@@ -4,6 +4,9 @@
 #include <xc.h>
 
 #include "Main.h"
+#include "Port.h"
+#include "SW.h"
+#include "SSD.h"
 #define _XTAL_FREQ 8000000
 
 // PIC16F877A Configuration Bit Settings
@@ -26,10 +29,14 @@
 
 void main(void) {
     
+    SSD_Init(SSD_FIRST);
+    SSD_Init(SSD_SECONED);
+    SSD_Init(SSD_THIRD);
+    
     while(1)
     {
-      
-        
+      SSD_Update();
+      SSD_SetValue(SSD_SECONED, SSD_Mid);
     }
     
     
