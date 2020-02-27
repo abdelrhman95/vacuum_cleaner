@@ -7,6 +7,14 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "SSD.c" 2
+
+
+
+
+
+
+
+
 # 1 "./Main.h" 1
 # 13 "./Main.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
@@ -1723,16 +1731,18 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
 # 13 "./Main.h" 2
-# 60 "./Main.h"
+# 145 "./Main.h"
 typedef unsigned int tWord;
 typedef unsigned char tByte;
-# 1 "SSD.c" 2
+typedef unsigned int uint16;
+typedef unsigned char uint8;
+# 9 "SSD.c" 2
 
 # 1 "./Port.h" 1
-# 2 "SSD.c" 2
+# 10 "SSD.c" 2
 
 # 1 "./SSD.h" 1
-# 13 "./SSD.h"
+# 21 "./SSD.h"
 typedef enum
 {
     SSD_FIRST,
@@ -1756,7 +1766,7 @@ typedef enum
     SSD_NULL
 }tSSD_Symbol;
 
-void SSD_Init(tSSD ssd);
+void SSD_Init(tSSD ssd,tSSD_Symbol symbol);
 void SSD_Update(void);
 
 void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol);
@@ -1766,8 +1776,17 @@ tSSD_State SSD_GetState(tSSD ssd);
 void SSD_SetState(tSSD ssd, tSSD_State state);
 
 void SSD_SetDotState(tByte state);
-# 3 "SSD.c" 2
-# 14 "SSD.c"
+# 11 "SSD.c" 2
+
+# 1 "./Timer.h" 1
+# 18 "./Timer.h"
+void TMR0_Init(void);
+void TMR0_Start(void);
+tByte TMR0_CheckOverFlow(void);
+void TMR0_Stop(void);
+void TMR0_ISR(void);
+# 12 "SSD.c" 2
+# 22 "SSD.c"
 static tByte SSD_Data[(4)] =
 {
     0b00001000,
@@ -1787,7 +1806,7 @@ static tByte SSD_DotState = SSD_OFF;
 
 static void SSD_Out(tSSD ssd, tSSD_Symbol ssd_symbol);
 
-void SSD_Init(tSSD ssd)
+void SSD_Init(tSSD ssd,tSSD_Symbol symbol)
 {
 
 
@@ -1799,12 +1818,15 @@ void SSD_Init(tSSD ssd)
     {
         case SSD_FIRST:
             ((((TRISB))) = (((TRISB)) & (~(1 << ((7)))))|((0) << ((7))));
+            SSD_Values[SSD_FIRST] = SSD_Low;
             break;
         case SSD_SECONED:
             ((((TRISB))) = (((TRISB)) & (~(1 << ((6)))))|((0) << ((6))));
+            SSD_Values[SSD_SECONED] = SSD_Mid;
             break;
         case SSD_THIRD:
             ((((TRISB))) = (((TRISB)) & (~(1 << ((5)))))|((0) << ((5))));
+            SSD_Values[SSD_THIRD] = SSD_High;
             break;
 
         default:
@@ -1820,9 +1842,9 @@ void SSD_Update(void)
 
 
 
-    SSD_counter += (5);
+    SSD_counter += (10);
 
-    if (SSD_counter != (5)){
+    if (SSD_counter != (10)){
         return;
     }
 
@@ -1896,12 +1918,8 @@ void SSD_SetState(tSSD ssd, tSSD_State state)
 }
 
 
-void SSD_SetDotState(tByte state)
-{
 
-    SSD_DotState = state;
 
-}
 static void SSD_Out(tSSD ssd, tSSD_Symbol ssd_symbol)
 {
 

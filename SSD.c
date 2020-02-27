@@ -1,9 +1,17 @@
+
+/*
+ * File:   SSD.c
+ * Author: Abdelrhman Sayed
+ *
+ * Created on 14 JAN, 2020, 08:11 PM
+ */
+
 #include "Main.h"
 #include "Port.h"
 #include "SSD.h"
-
+#include"Timer.h"
 /* SSD_Update period */
-#define SSD_PERIOD_MS   (5)
+#define SSD_PERIOD_MS   (10)
 
 /* Number of SSD symbols */
 #define N_SSD_SYMBOLS   (4)
@@ -30,7 +38,7 @@ static tByte SSD_DotState = SSD_OFF;
 
 static void SSD_Out(tSSD ssd, tSSD_Symbol ssd_symbol);
 
-void SSD_Init(tSSD ssd)
+void SSD_Init(tSSD ssd,tSSD_Symbol symbol)
 {
     /* Add your code here! */
     /* Initialize SSD data pins */
@@ -42,12 +50,15 @@ void SSD_Init(tSSD ssd)
     {
         case SSD_FIRST:
             GPIO_InitPortPin(SSD_FIRST_CR, SSD_FIRST_PIN, GPIO_OUT);
+            SSD_Values[SSD_FIRST] = SSD_Low;
             break;
         case   SSD_SECONED:
             GPIO_InitPortPin(SSD_SECONED_CR, SSD_SECONED_PIN, GPIO_OUT);
+            SSD_Values[SSD_SECONED] = SSD_Mid;
             break;
         case   SSD_THIRD:
             GPIO_InitPortPin(SSD_THIRD_CR, SSD_THIRD_PIN, GPIO_OUT);
+            SSD_Values[SSD_THIRD] = SSD_High;
             break;
         /* Should not be here */
         default:
@@ -139,12 +150,8 @@ void SSD_SetState(tSSD ssd, tSSD_State state)
 }
 
 
-void SSD_SetDotState(tByte state)
-{
-    /* Add your code here! */
-    SSD_DotState = state;
-    /* End of your code!*/
-}
+
+
 static  void SSD_Out(tSSD ssd, tSSD_Symbol ssd_symbol)
 {
     /* Add your code here! */

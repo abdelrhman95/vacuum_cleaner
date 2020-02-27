@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "Timer.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,10 +6,10 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
+# 1 "Timer.c" 2
 
-
-
+# 1 "./Main.h" 1
+# 13 "./Main.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -1723,19 +1723,22 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 4 "main.c" 2
-
-
-# 1 "./Main.h" 1
+# 13 "./Main.h" 2
 # 145 "./Main.h"
 typedef unsigned int tWord;
 typedef unsigned char tByte;
 typedef unsigned int uint16;
 typedef unsigned char uint8;
-# 6 "main.c" 2
+# 2 "Timer.c" 2
 
-# 1 "./Port.h" 1
-# 7 "main.c" 2
+# 1 "./Timer.h" 1
+# 18 "./Timer.h"
+void TMR0_Init(void);
+void TMR0_Start(void);
+tByte TMR0_CheckOverFlow(void);
+void TMR0_Stop(void);
+void TMR0_ISR(void);
+# 3 "Timer.c" 2
 
 # 1 "./SW.h" 1
 # 18 "./SW.h"
@@ -1758,10 +1761,26 @@ typedef enum
 void SW_Init(void);
 tSW_State SW_GetState(tSW sw);
 void SW_Update(void);
-# 8 "main.c" 2
+# 4 "Timer.c" 2
+
+# 1 "./Display.h" 1
+# 19 "./Display.h"
+void DISP_Init(void);
+void DISP_Update(void);
+# 5 "Timer.c" 2
 
 # 1 "./SSD.h" 1
-# 21 "./SSD.h"
+# 13 "./SSD.h"
+# 1 "./Port.h" 1
+# 13 "./SSD.h" 2
+
+
+
+
+
+
+
+
 typedef enum
 {
     SSD_FIRST,
@@ -1795,8 +1814,10 @@ tSSD_State SSD_GetState(tSSD ssd);
 void SSD_SetState(tSSD ssd, tSSD_State state);
 
 void SSD_SetDotState(tByte state);
-# 9 "main.c" 2
+# 6 "Timer.c" 2
 
+# 1 "./Motor.h" 1
+# 16 "./Motor.h"
 # 1 "./VC.h" 1
 # 23 "./VC.h"
 typedef enum{
@@ -1814,34 +1835,10 @@ typedef enum{
 void VC_Init(tVC_Motor_speed speed);
 void VC_update(void);
 tVC_Motor_speed VC_GetSpeed(void);
-# 10 "main.c" 2
+# 16 "./Motor.h" 2
 
-# 1 "./Display.h" 1
-# 19 "./Display.h"
-void DISP_Init(void);
-void DISP_Update(void);
-# 11 "main.c" 2
 
-# 1 "./TIMER_1.h" 1
-# 27 "./TIMER_1.h"
-void TMR1_Init(void);
-void TMR1_Start(uint16 Degree);
-void TMR1_Stop(void);
-uint8 TMR1_CheckOverflow(void);
-void TMR1_ISR(void);
-# 12 "main.c" 2
 
-# 1 "./Timer.h" 1
-# 18 "./Timer.h"
-void TMR0_Init(void);
-void TMR0_Start(void);
-tByte TMR0_CheckOverFlow(void);
-void TMR0_Stop(void);
-void TMR0_ISR(void);
-# 13 "main.c" 2
-
-# 1 "./Motor.h" 1
-# 19 "./Motor.h"
 typedef enum{
 
     Mot_normal_state,
@@ -1854,81 +1851,76 @@ void MOT_Update(void);
 void MOT_SetTargetAngle(tVC_Motor_speed M);
 uint8 Get_actual(void);
 void Firing_Pulse(void);
-# 14 "main.c" 2
+# 7 "Timer.c" 2
 
 
+# 1 "./TIMER_1.h" 1
+# 27 "./TIMER_1.h"
+void TMR1_Init(void);
+void TMR1_Start(uint16 Degree);
+void TMR1_Stop(void);
+uint8 TMR1_CheckOverflow(void);
+void TMR1_ISR(void);
+# 9 "Timer.c" 2
 
 
+extern volatile uint8 ISR_FLAG;
+
+void TMR0_Init(void)
+{
+
+ PS2 = 1; PS1 = 1; PS0 = 1; PSA = 0;
 
 
+ (T0CS = 1);
 
-
-#pragma config FOSC = XT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config BOREN = OFF
-#pragma config LVP = OFF
-#pragma config CPD = OFF
-#pragma config WRT = OFF
-#pragma config CP = OFF
-
-
-
-
-volatile uint8 ISR_FLAG;
-
-
-int main(void) {
-
-
-
-
-    ISR_FLAG = 0;
-    VC_Init(Mid_speed);
-    TMR0_Init();
-    TMR0_Start();
-    TMR1_Init();
-    DISP_Init();
-    SW_Init();
-
-
-    (((TRISC)) = ((TRISC) & (~(1 << (4))))|((0) << (4)));
-    (((PORTC)) = ((PORTC) & (~(1 << (4))))|(0 << (4)));
-
-
-    while(1)
-    {
-        if(ISR_FLAG)
-        {
-
-            (((PORTC)) = (((PORTC)) ^(1 << (4))));
-
-            SSD_Update();
-            SW_Update();
-            DISP_Update();
-            VC_update();
-            MOT_Update();
-            ISR_FLAG = 0;
-        }
-    }
-# 80 "main.c"
 }
 
-void __attribute__((picinterrupt(("")))) Generic_ISR()
+void TMR0_Start(void)
+{
+
+ (TMR0IF = 0);
+
+ (TMR0 = 256 - ((78)));
+
+ (TMR0IE = 1);
+ (GIE = 1);
+
+ (T0CS = 0);
+
+}
+uint8 TMR0_CheckOverFlow(void)
+{
+
+ return (TMR0IF);
+
+}
+void TMR0_Stop(void)
+{
+
+ (T0CS = 1);
+
+}
+
+void TMR0_ISR(void)
 {
 
 
-    if(TMR1_CheckOverflow())
-    {
-        TMR1_ISR();
-    }
 
 
 
+    TMR1_Start(Get_actual());
 
-    if(TMR0_CheckOverFlow())
-    {
-        TMR0_ISR();
-    }
+
+
+ (TMR0IF = 0);
+
+
+ (TMR0 = 256 - ((78)));
+
+
+    ISR_FLAG = 1;
+
+
 
 }

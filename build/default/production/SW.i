@@ -1723,9 +1723,11 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
 # 13 "./Main.h" 2
-# 60 "./Main.h"
+# 145 "./Main.h"
 typedef unsigned int tWord;
 typedef unsigned char tByte;
+typedef unsigned int uint16;
+typedef unsigned char uint8;
 # 1 "SW.c" 2
 
 # 1 "./Port.h" 1
@@ -1753,6 +1755,15 @@ void SW_Init(void);
 tSW_State SW_GetState(tSW sw);
 void SW_Update(void);
 # 3 "SW.c" 2
+
+# 1 "./Timer.h" 1
+# 18 "./Timer.h"
+void TMR0_Init(void);
+void TMR0_Start(void);
+tByte TMR0_CheckOverFlow(void);
+void TMR0_Stop(void);
+void TMR0_ISR(void);
+# 4 "SW.c" 2
 # 20 "SW.c"
 typedef struct
 {
@@ -1803,7 +1814,7 @@ void SW_Update(void)
     tByte index = 0;
 
 
-    SW_counter += (5);
+    SW_counter += (10);
 
     if (SW_counter != (20)){
         return;

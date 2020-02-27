@@ -3,52 +3,94 @@
 [d edition pro ]
 [d chip 16F877A ]
 [d frameptr 0 ]
-"32 F:\Embedded systems\vacuum_cleaner\main.c
-[e E867 . `uc
-SSD_FIRST 0
-SSD_SECONED 1
-SSD_THIRD 2
-]
-"39
-[e E876 . `uc
-SSD_Low 0
-SSD_Mid 1
-SSD_High 2
-SSD_NULL 3
+"43 F:\Embedded systems\vacuum_cleaner\main.c
+[e E900 . `uc
+Min_speed 140
+Mid_speed 90
+Max_speed 10
 ]
 "27 F:\Embedded systems\vacuum_cleaner\SW.c
-[e E857 . `uc
+[e E859 . `uc
 SW_RELEASED 0
 SW_PRE_PRESSED 1
 SW_PRESSED 2
 SW_PRE_RELEASED 3
 ]
 "40
-[e E852 . `uc
+[e E854 . `uc
 SW_PLUS 0
 SW_MINUS 1
 SW_PRE 2
 ]
-"23 F:\Embedded systems\vacuum_cleaner\SSD.c
-[e E852 . `uc
+"31 F:\Embedded systems\vacuum_cleaner\SSD.c
+[e E854 . `uc
 SSD_FIRST 0
 SSD_SECONED 1
 SSD_THIRD 2
 ]
-"27
-[e E861 . `uc
+"35
+[e E863 . `uc
 SSD_Low 0
 SSD_Mid 1
 SSD_High 2
 SSD_NULL 3
 ]
-"29
-[e E857 . `uc
+"37
+[e E859 . `uc
 SSD_OFF 0
 SSD_ON 1
 ]
+"25 F:\Embedded systems\vacuum_cleaner\VC.c
+[e E850 . `uc
+Min_speed 140
+Mid_speed 90
+Max_speed 10
+]
+"104
+[e E859 . `uc
+SW_PLUS 0
+SW_MINUS 1
+SW_PRE 2
+]
+[e E864 . `uc
+SW_RELEASED 0
+SW_PRE_PRESSED 1
+SW_PRESSED 2
+SW_PRE_RELEASED 3
+]
+"23 F:\Embedded systems\vacuum_cleaner\Display.c
+[e E863 . `uc
+SSD_FIRST 0
+SSD_SECONED 1
+SSD_THIRD 2
+]
+[e E872 . `uc
+SSD_Low 0
+SSD_Mid 1
+SSD_High 2
+SSD_NULL 3
+]
+"79
+[e E850 . `uc
+Min_speed 140
+Mid_speed 90
+Max_speed 10
+]
+"38 F:\Embedded systems\vacuum_cleaner\Motor.c
+[e E850 . `uc
+Min_speed 140
+Mid_speed 90
+Max_speed 10
+]
+"41
+[e E863 . `uc
+Mot_normal_state 0
+Mot_Switching_state 1
+]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul16.c
+[v i1___wmul __wmul `(ui  1 e 2 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
 [v ___bmul __bmul `(uc  1 e 1 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8_16.c
@@ -57,83 +99,347 @@ SSD_ON 1
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"30 F:\Embedded systems\vacuum_cleaner\main.c
-[v _main main `(v  1 e 1 0 ]
-"33 F:\Embedded systems\vacuum_cleaner\SSD.c
+"18 F:\Embedded systems\vacuum_cleaner\Display.c
+[v _DISP_Init DISP_Init `(v  1 e 1 0 ]
+"31
+[v _DISP_Update DISP_Update `(v  1 e 1 0 ]
+"37 F:\Embedded systems\vacuum_cleaner\main.c
+[v _main main `(i  1 e 2 0 ]
+"82
+[v _Generic_ISR Generic_ISR `II(v  1 e 1 0 ]
+"48 F:\Embedded systems\vacuum_cleaner\Motor.c
+[v _MOT_Init MOT_Init `(v  1 e 1 0 ]
+"71
+[v _MOT_Update MOT_Update `(v  1 e 1 0 ]
+"160
+[v _MOT_SetTargetAngle MOT_SetTargetAngle `(v  1 e 1 0 ]
+"183
+[v _Get_actual Get_actual `(uc  1 e 1 0 ]
+"189
+[v _Firing_Pulse Firing_Pulse `(v  1 e 1 0 ]
+"41 F:\Embedded systems\vacuum_cleaner\SSD.c
 [v _SSD_Init SSD_Init `(v  1 e 1 0 ]
-"60
+"71
 [v _SSD_Update SSD_Update `(v  1 e 1 0 ]
-"89
+"100
 [v _SSD_SetValue SSD_SetValue `(v  1 e 1 0 ]
-"120
+"131
 [v _SSD_SetState SSD_SetState `(v  1 e 1 0 ]
-"148
+"155
 [v _SSD_Out SSD_Out `(v  1 s 1 SSD_Out ]
-"216 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
+"29 F:\Embedded systems\vacuum_cleaner\SW.c
+[v _SW_Init SW_Init `(v  1 e 1 0 ]
+"54
+[v _SW_GetState SW_GetState `(E859  1 e 1 0 ]
+"63
+[v _SW_Update SW_Update `(v  1 e 1 0 ]
+"13 F:\Embedded systems\vacuum_cleaner\Timer.c
+[v _TMR0_Init TMR0_Init `(v  1 e 1 0 ]
+"23
+[v _TMR0_Start TMR0_Start `(v  1 e 1 0 ]
+"36
+[v _TMR0_CheckOverFlow TMR0_CheckOverFlow `(uc  1 e 1 0 ]
+"49
+[v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
+"16 F:\Embedded systems\vacuum_cleaner\TIMER1.c
+[v _TMR1_Init TMR1_Init `(v  1 e 1 0 ]
+"28
+[v _TMR1_Start TMR1_Start `(v  1 e 1 0 ]
+"48
+[v _TMR1_CheckOverflow TMR1_CheckOverflow `(uc  1 e 1 0 ]
+"55
+[v _TMR1_ISR TMR1_ISR `(v  1 e 1 0 ]
+"35 F:\Embedded systems\vacuum_cleaner\VC.c
+[v _VC_Init VC_Init `(v  1 e 1 0 ]
+"57
+[v _VC_update VC_update `(v  1 e 1 0 ]
+"92
+[v _VC_GetSpeed VC_GetSpeed `(E850  1 e 1 0 ]
+"100
+[v _handling_switch_events handling_switch_events `(v  1 s 1 handling_switch_events ]
+"59 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
+[v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
+"216
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"278
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
 "340
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
+"634
+[v _TMR1 TMR1 `VEus  1 e 2 @14 ]
 "1375
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
 "1499
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
-"14 F:\Embedded systems\vacuum_cleaner\SSD.c
+"2569
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"2629
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
+"2635
+[v _PS0 PS0 `VEb  1 e 0 @1032 ]
+"2638
+[v _PS1 PS1 `VEb  1 e 0 @1033 ]
+"2641
+[v _PS2 PS2 `VEb  1 e 0 @1034 ]
+"2644
+[v _PSA PSA `VEb  1 e 0 @1035 ]
+"2845
+[v _T0CS T0CS `VEb  1 e 0 @1037 ]
+"2857
+[v _T1CKPS0 T1CKPS0 `VEb  1 e 0 @132 ]
+"2860
+[v _T1CKPS1 T1CKPS1 `VEb  1 e 0 @133 ]
+"2866
+[v _T1OSCEN T1OSCEN `VEb  1 e 0 @131 ]
+"2878
+[v _TMR0IE TMR0IE `VEb  1 e 0 @93 ]
+"2881
+[v _TMR0IF TMR0IF `VEb  1 e 0 @90 ]
+"2884
+[v _TMR1CS TMR1CS `VEb  1 e 0 @129 ]
+"2887
+[v _TMR1IE TMR1IE `VEb  1 e 0 @1120 ]
+"2890
+[v _TMR1IF TMR1IF `VEb  1 e 0 @96 ]
+"2893
+[v _TMR1ON TMR1ON `VEb  1 e 0 @128 ]
+"34 F:\Embedded systems\vacuum_cleaner\main.c
+[v _ISR_FLAG ISR_FLAG `VEuc  1 e 1 0 ]
+"35 F:\Embedded systems\vacuum_cleaner\Motor.c
+[v _Actual_angle Actual_angle `uc  1 s 1 Actual_angle ]
+"38
+[v _Target_firing_angle Target_firing_angle `E850  1 s 1 Target_firing_angle ]
+"41
+[v _motor_state motor_state `E863  1 s 1 motor_state ]
+"45
+[v _Switching_Counter Switching_Counter `uc  1 s 1 Switching_Counter ]
+"22 F:\Embedded systems\vacuum_cleaner\SSD.c
 [v _SSD_Data SSD_Data `[4]uc  1 s 4 SSD_Data ]
-"23
-[v _SSD_current SSD_current `E852  1 s 1 SSD_current ]
-"27
-[v _SSD_Values SSD_Values `[3]E861  1 s 3 SSD_Values ]
-"29
-[v _SSD_DotState SSD_DotState `uc  1 s 1 SSD_DotState ]
-[s S56 . 3 `[2]uc 1 sw_samples 2 0 `E857 1 sw_state 1 2 ]
+"31
+[v _SSD_current SSD_current `E854  1 s 1 SSD_current ]
+"35
+[v _SSD_Values SSD_Values `[3]E863  1 s 3 SSD_Values ]
+[s S105 . 3 `[2]uc 1 sw_samples 2 0 `E859 1 sw_state 1 2 ]
 "27 F:\Embedded systems\vacuum_cleaner\SW.c
-[v _SWs_Info SWs_Info `[3]S56  1 s 9 SWs_Info ]
-"30 F:\Embedded systems\vacuum_cleaner\main.c
-[v _main main `(v  1 e 1 0 ]
+[v _SWs_Info SWs_Info `[3]S105  1 s 9 SWs_Info ]
+"25 F:\Embedded systems\vacuum_cleaner\VC.c
+[v _Motor_speed Motor_speed `E850  1 s 1 Motor_speed ]
+"31
+[v _PRESSURE_COUNTER PRESSURE_COUNTER `ui  1 s 2 PRESSURE_COUNTER ]
+"37 F:\Embedded systems\vacuum_cleaner\main.c
+[v _main main `(i  1 e 2 0 ]
 {
-"43
+"80
 } 0
-"60 F:\Embedded systems\vacuum_cleaner\SSD.c
+"57 F:\Embedded systems\vacuum_cleaner\VC.c
+[v _VC_update VC_update `(v  1 e 1 0 ]
+{
+"61
+[v VC_update@VC_counter VC_counter `uc  1 s 1 VC_counter ]
+"87
+} 0
+"100
+[v _handling_switch_events handling_switch_events `(v  1 s 1 handling_switch_events ]
+{
+"220
+} 0
+"54 F:\Embedded systems\vacuum_cleaner\SW.c
+[v _SW_GetState SW_GetState `(E859  1 e 1 0 ]
+{
+[v SW_GetState@sw sw `E854  1 a 1 wreg ]
+[v SW_GetState@sw sw `E854  1 a 1 wreg ]
+"58
+[v SW_GetState@sw sw `E854  1 a 1 5 ]
+"60
+} 0
+"160 F:\Embedded systems\vacuum_cleaner\Motor.c
+[v _MOT_SetTargetAngle MOT_SetTargetAngle `(v  1 e 1 0 ]
+{
+[v MOT_SetTargetAngle@M M `E850  1 a 1 wreg ]
+[v MOT_SetTargetAngle@M M `E850  1 a 1 wreg ]
+"167
+[v MOT_SetTargetAngle@M M `E850  1 a 1 1 ]
+"178
+} 0
+"35 F:\Embedded systems\vacuum_cleaner\VC.c
+[v _VC_Init VC_Init `(v  1 e 1 0 ]
+{
+[v VC_Init@speed speed `E850  1 a 1 wreg ]
+[v VC_Init@speed speed `E850  1 a 1 wreg ]
+"39
+[v VC_Init@speed speed `E850  1 a 1 3 ]
+"50
+} 0
+"48 F:\Embedded systems\vacuum_cleaner\Motor.c
+[v _MOT_Init MOT_Init `(v  1 e 1 0 ]
+{
+[v MOT_Init@M M `E850  1 a 1 wreg ]
+[v MOT_Init@M M `E850  1 a 1 wreg ]
+"52
+[v MOT_Init@M M `E850  1 a 1 1 ]
+"68
+} 0
+"16 F:\Embedded systems\vacuum_cleaner\TIMER1.c
+[v _TMR1_Init TMR1_Init `(v  1 e 1 0 ]
+{
+"27
+} 0
+"23 F:\Embedded systems\vacuum_cleaner\Timer.c
+[v _TMR0_Start TMR0_Start `(v  1 e 1 0 ]
+{
+"35
+} 0
+"13
+[v _TMR0_Init TMR0_Init `(v  1 e 1 0 ]
+{
+"21
+} 0
+"63 F:\Embedded systems\vacuum_cleaner\SW.c
+[v _SW_Update SW_Update `(v  1 e 1 0 ]
+{
+"66
+[v SW_Update@index index `uc  1 a 1 7 ]
+"65
+[v SW_Update@SW_counter SW_counter `ui  1 s 2 SW_counter ]
+"154
+} 0
+"29
+[v _SW_Init SW_Init `(v  1 e 1 0 ]
+{
+"31
+[v SW_Init@index index `uc  1 a 1 5 ]
+"51
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 2 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 0 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 3 ]
+"51
+} 0
+"71 F:\Embedded systems\vacuum_cleaner\SSD.c
 [v _SSD_Update SSD_Update `(v  1 e 1 0 ]
 {
-"62
+"73
 [v SSD_Update@SSD_counter SSD_counter `ui  1 s 2 SSD_counter ]
-"86
+"97
 } 0
-"89
+"71 F:\Embedded systems\vacuum_cleaner\Motor.c
+[v _MOT_Update MOT_Update `(v  1 e 1 0 ]
+{
+"74
+[v MOT_Update@motor_tick_counter motor_tick_counter `uc  1 s 1 motor_tick_counter ]
+"155
+} 0
+"31 F:\Embedded systems\vacuum_cleaner\Display.c
+[v _DISP_Update DISP_Update `(v  1 e 1 0 ]
+{
+"34
+[v DISP_Update@DISP_counter DISP_counter `ui  1 s 2 DISP_counter ]
+"81
+} 0
+"92 F:\Embedded systems\vacuum_cleaner\VC.c
+[v _VC_GetSpeed VC_GetSpeed `(E850  1 e 1 0 ]
+{
+"97
+} 0
+"100 F:\Embedded systems\vacuum_cleaner\SSD.c
 [v _SSD_SetValue SSD_SetValue `(v  1 e 1 0 ]
 {
-[v SSD_SetValue@ssd ssd `E852  1 a 1 wreg ]
-[v SSD_SetValue@ssd ssd `E852  1 a 1 wreg ]
-[v SSD_SetValue@ssd_symbol ssd_symbol `E861  1 p 1 0 ]
-"92
-[v SSD_SetValue@ssd ssd `E852  1 a 1 2 ]
-"94
+[v SSD_SetValue@ssd ssd `E854  1 a 1 wreg ]
+[v SSD_SetValue@ssd ssd `E854  1 a 1 wreg ]
+[v SSD_SetValue@ssd_symbol ssd_symbol `E863  1 p 1 0 ]
+"103
+[v SSD_SetValue@ssd ssd `E854  1 a 1 2 ]
+"105
 } 0
-"33
+"18 F:\Embedded systems\vacuum_cleaner\Display.c
+[v _DISP_Init DISP_Init `(v  1 e 1 0 ]
+{
+"27
+} 0
+"41 F:\Embedded systems\vacuum_cleaner\SSD.c
 [v _SSD_Init SSD_Init `(v  1 e 1 0 ]
 {
-[v SSD_Init@ssd ssd `E852  1 a 1 wreg ]
-[v SSD_Init@ssd ssd `E852  1 a 1 wreg ]
-[v SSD_Init@ssd ssd `E852  1 a 1 10 ]
-"58
+[v SSD_Init@ssd ssd `E854  1 a 1 wreg ]
+[v SSD_Init@ssd ssd `E854  1 a 1 wreg ]
+[v SSD_Init@symbol symbol `E863  1 p 1 6 ]
+[v SSD_Init@ssd ssd `E854  1 a 1 11 ]
+"69
 } 0
-"148
+"155
 [v _SSD_Out SSD_Out `(v  1 s 1 SSD_Out ]
 {
-[v SSD_Out@ssd ssd `E852  1 a 1 wreg ]
-[v SSD_Out@ssd ssd `E852  1 a 1 wreg ]
-[v SSD_Out@ssd_symbol ssd_symbol `E861  1 p 1 4 ]
-"152
-[v SSD_Out@ssd ssd `E852  1 a 1 5 ]
-"163
+[v SSD_Out@ssd ssd `E854  1 a 1 wreg ]
+[v SSD_Out@ssd ssd `E854  1 a 1 wreg ]
+[v SSD_Out@ssd_symbol ssd_symbol `E863  1 p 1 4 ]
+"159
+[v SSD_Out@ssd ssd `E854  1 a 1 5 ]
+"170
 } 0
-"120
+"131
 [v _SSD_SetState SSD_SetState `(v  1 e 1 0 ]
 {
-[v SSD_SetState@ssd ssd `E852  1 a 1 wreg ]
-[v SSD_SetState@ssd ssd `E852  1 a 1 wreg ]
-[v SSD_SetState@state state `E857  1 p 1 0 ]
-[v SSD_SetState@ssd ssd `E852  1 a 1 3 ]
-"139
+[v SSD_SetState@ssd ssd `E854  1 a 1 wreg ]
+[v SSD_SetState@ssd ssd `E854  1 a 1 wreg ]
+[v SSD_SetState@state state `E859  1 p 1 0 ]
+[v SSD_SetState@ssd ssd `E854  1 a 1 3 ]
+"150
+} 0
+"82 F:\Embedded systems\vacuum_cleaner\main.c
+[v _Generic_ISR Generic_ISR `II(v  1 e 1 0 ]
+{
+"99
+} 0
+"55 F:\Embedded systems\vacuum_cleaner\TIMER1.c
+[v _TMR1_ISR TMR1_ISR `(v  1 e 1 0 ]
+{
+"66
+} 0
+"189 F:\Embedded systems\vacuum_cleaner\Motor.c
+[v _Firing_Pulse Firing_Pulse `(v  1 e 1 0 ]
+{
+"198
+} 0
+"48 F:\Embedded systems\vacuum_cleaner\TIMER1.c
+[v _TMR1_CheckOverflow TMR1_CheckOverflow `(uc  1 e 1 0 ]
+{
+"52
+} 0
+"49 F:\Embedded systems\vacuum_cleaner\Timer.c
+[v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
+{
+"70
+} 0
+"28 F:\Embedded systems\vacuum_cleaner\TIMER1.c
+[v _TMR1_Start TMR1_Start `(v  1 e 1 0 ]
+{
+[v TMR1_Start@Degree Degree `ui  1 p 2 6 ]
+"41
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul16.c
+[v i1___wmul __wmul `(ui  1 e 2 0 ]
+{
+[v i1___wmul@product __wmul `ui  1 a 2 4 ]
+[v i1___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v i1___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"183 F:\Embedded systems\vacuum_cleaner\Motor.c
+[v _Get_actual Get_actual `(uc  1 e 1 0 ]
+{
+"186
+} 0
+"36 F:\Embedded systems\vacuum_cleaner\Timer.c
+[v _TMR0_CheckOverFlow TMR0_CheckOverFlow `(uc  1 e 1 0 ]
+{
+"41
 } 0

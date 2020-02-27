@@ -8,6 +8,11 @@
       <itemPath>SW.h</itemPath>
       <itemPath>Port.h</itemPath>
       <itemPath>SSD.h</itemPath>
+      <itemPath>VC.h</itemPath>
+      <itemPath>Display.h</itemPath>
+      <itemPath>Motor.h</itemPath>
+      <itemPath>Timer.h</itemPath>
+      <itemPath>TIMER_1.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -19,6 +24,11 @@
       <itemPath>main.c</itemPath>
       <itemPath>SW.c</itemPath>
       <itemPath>SSD.c</itemPath>
+      <itemPath>VC.c</itemPath>
+      <itemPath>Display.c</itemPath>
+      <itemPath>Motor.c</itemPath>
+      <itemPath>Timer.c</itemPath>
+      <itemPath>TIMER1.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

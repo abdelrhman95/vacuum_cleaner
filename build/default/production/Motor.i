@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "Motor.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,12 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
+# 1 "Motor.c" 2
+
+
+
+
+
 
 
 
@@ -1723,80 +1728,10 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 4 "main.c" 2
+# 9 "Motor.c" 2
 
-
-# 1 "./Main.h" 1
-# 145 "./Main.h"
-typedef unsigned int tWord;
-typedef unsigned char tByte;
-typedef unsigned int uint16;
-typedef unsigned char uint8;
-# 6 "main.c" 2
-
-# 1 "./Port.h" 1
-# 7 "main.c" 2
-
-# 1 "./SW.h" 1
-# 18 "./SW.h"
-typedef enum
-{
-    SW_PLUS,
-    SW_MINUS,
-    SW_PRE
-}tSW;
-
-
-typedef enum
-{
-    SW_RELEASED,
-    SW_PRE_PRESSED,
-    SW_PRESSED,
-    SW_PRE_RELEASED
-}tSW_State;
-
-void SW_Init(void);
-tSW_State SW_GetState(tSW sw);
-void SW_Update(void);
-# 8 "main.c" 2
-
-# 1 "./SSD.h" 1
-# 21 "./SSD.h"
-typedef enum
-{
-    SSD_FIRST,
-    SSD_SECONED,
-    SSD_THIRD
-}tSSD;
-
-
-typedef enum
-{
-    SSD_OFF = 0,
-    SSD_ON = 1
-}tSSD_State;
-
-
-typedef enum
-{
-    SSD_Low = 0,
-    SSD_Mid,
-    SSD_High,
-    SSD_NULL
-}tSSD_Symbol;
-
-void SSD_Init(tSSD ssd,tSSD_Symbol symbol);
-void SSD_Update(void);
-
-void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol);
-
-tSSD_Symbol SSD_GetValue(tSSD ssd);
-tSSD_State SSD_GetState(tSSD ssd);
-void SSD_SetState(tSSD ssd, tSSD_State state);
-
-void SSD_SetDotState(tByte state);
-# 9 "main.c" 2
-
+# 1 "./Motor.h" 1
+# 16 "./Motor.h"
 # 1 "./VC.h" 1
 # 23 "./VC.h"
 typedef enum{
@@ -1814,34 +1749,17 @@ typedef enum{
 void VC_Init(tVC_Motor_speed speed);
 void VC_update(void);
 tVC_Motor_speed VC_GetSpeed(void);
-# 10 "main.c" 2
+# 16 "./Motor.h" 2
 
-# 1 "./Display.h" 1
-# 19 "./Display.h"
-void DISP_Init(void);
-void DISP_Update(void);
-# 11 "main.c" 2
+# 1 "./Main.h" 1
+# 145 "./Main.h"
+typedef unsigned int tWord;
+typedef unsigned char tByte;
+typedef unsigned int uint16;
+typedef unsigned char uint8;
+# 17 "./Motor.h" 2
 
-# 1 "./TIMER_1.h" 1
-# 27 "./TIMER_1.h"
-void TMR1_Init(void);
-void TMR1_Start(uint16 Degree);
-void TMR1_Stop(void);
-uint8 TMR1_CheckOverflow(void);
-void TMR1_ISR(void);
-# 12 "main.c" 2
 
-# 1 "./Timer.h" 1
-# 18 "./Timer.h"
-void TMR0_Init(void);
-void TMR0_Start(void);
-tByte TMR0_CheckOverFlow(void);
-void TMR0_Stop(void);
-void TMR0_ISR(void);
-# 13 "main.c" 2
-
-# 1 "./Motor.h" 1
-# 19 "./Motor.h"
 typedef enum{
 
     Mot_normal_state,
@@ -1854,81 +1772,183 @@ void MOT_Update(void);
 void MOT_SetTargetAngle(tVC_Motor_speed M);
 uint8 Get_actual(void);
 void Firing_Pulse(void);
-# 14 "main.c" 2
+# 10 "Motor.c" 2
+
+# 1 "./Port.h" 1
+# 11 "Motor.c" 2
 
 
 
+# 1 "./Timer.h" 1
+# 18 "./Timer.h"
+void TMR0_Init(void);
+void TMR0_Start(void);
+tByte TMR0_CheckOverFlow(void);
+void TMR0_Stop(void);
+void TMR0_ISR(void);
+# 14 "Motor.c" 2
+# 35 "Motor.c"
+static uint8 Actual_angle;
+
+
+static tVC_Motor_speed Target_firing_angle;
+
+
+static Mot_states motor_state;
 
 
 
+static uint8 Switching_Counter ;
 
 
-#pragma config FOSC = XT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config BOREN = OFF
-#pragma config LVP = OFF
-#pragma config CPD = OFF
-#pragma config WRT = OFF
-#pragma config CP = OFF
-
-
-
-
-volatile uint8 ISR_FLAG;
-
-
-int main(void) {
-
-
-
-
-    ISR_FLAG = 0;
-    VC_Init(Mid_speed);
-    TMR0_Init();
-    TMR0_Start();
-    TMR1_Init();
-    DISP_Init();
-    SW_Init();
-
-
-    (((TRISC)) = ((TRISC) & (~(1 << (4))))|((0) << (4)));
-    (((PORTC)) = ((PORTC) & (~(1 << (4))))|(0 << (4)));
-
-
-    while(1)
-    {
-        if(ISR_FLAG)
-        {
-
-            (((PORTC)) = (((PORTC)) ^(1 << (4))));
-
-            SSD_Update();
-            SW_Update();
-            DISP_Update();
-            VC_update();
-            MOT_Update();
-            ISR_FLAG = 0;
-        }
-    }
-# 80 "main.c"
-}
-
-void __attribute__((picinterrupt(("")))) Generic_ISR()
+void MOT_Init(tVC_Motor_speed M)
 {
 
 
-    if(TMR1_CheckOverflow())
+    ((((PORTC))) = (((PORTC)) & (~(1 << ((3)))))|((0) << ((3))));
+    ((((TRISC))) = (((TRISC)) & (~(1 << ((3)))))|(0 << ((3))));
+
+
+
+    Actual_angle = (170);
+
+
+    Target_firing_angle = M;
+
+
+    motor_state = Mot_Switching_state;
+
+
+    Switching_Counter = 0;
+
+}
+
+
+void MOT_Update(void)
+{
+
+    static uint8 motor_tick_counter = 10;
+
+
+    motor_tick_counter += (10);
+
+
+    if(motor_tick_counter != (20)) return;
+
+
+    motor_tick_counter = 0;
+
+
+    switch(motor_state)
     {
-        TMR1_ISR();
+        case Mot_normal_state:
+
+
+
+            if(Actual_angle > Target_firing_angle)
+            {
+
+
+                Actual_angle -= (10);
+            }
+
+            else
+            {
+
+
+                Actual_angle += (10);
+            }
+
+            break;
+
+        case Mot_Switching_state:
+
+
+            if(Actual_angle == Target_firing_angle)
+            {
+
+
+
+                Actual_angle +=5;
+                motor_state = Mot_normal_state;
+            }
+            else
+            {
+
+
+
+                 Switching_Counter += (20);
+
+                if((40) == Switching_Counter)
+                {
+
+
+
+
+
+                     if(Actual_angle < Target_firing_angle)
+                     {
+                         Actual_angle ++ ;
+
+                     }
+
+                     else
+                     {
+
+                         Actual_angle --;
+                     }
+
+                     Switching_Counter = 0 ;
+                }
+
+            }
+                 break;
+        default:
+          break;
+
+    }
+
+}
+
+
+
+
+void MOT_SetTargetAngle(tVC_Motor_speed M)
+{
+
+
+
+
+
+    if(Target_firing_angle == M)
+    {
+        return;
     }
 
 
 
 
-    if(TMR0_CheckOverFlow())
-    {
-        TMR0_ISR();
-    }
+    motor_state = Mot_Switching_state;
+    Target_firing_angle = M;
+
+}
+
+
+
+
+uint8 Get_actual(void)
+{
+    return Actual_angle;
+}
+
+
+void Firing_Pulse(void)
+{
+
+    ((((PORTC))) = (((PORTC)) & (~(1 << ((3)))))|(1 << ((3))));
+
+    _delay((unsigned long)(((100))*(8000000/4000000.0)));
+
+     ((((PORTC))) = (((PORTC)) & (~(1 << ((3)))))|(0 << ((3))));
 
 }

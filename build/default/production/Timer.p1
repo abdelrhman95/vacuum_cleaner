@@ -1,61 +1,40 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"43 main.c
-[c E900 140 90 10 .. ]
-[n E900 . Min_speed Mid_speed Max_speed  ]
-"35 ./VC.h
-[; ;./VC.h: 35: void VC_Init(tVC_Motor_speed speed);
-[v _VC_Init `(v ~T0 @X0 0 ef1`E900 ]
-"18 ./Timer.h
-[; ;./Timer.h: 18: void TMR0_Init(void);
-[v _TMR0_Init `(v ~T0 @X0 0 ef ]
-"19
-[; ;./Timer.h: 19: void TMR0_Start(void);
-[v _TMR0_Start `(v ~T0 @X0 0 ef ]
-"27 ./TIMER_1.h
-[; ;./TIMER_1.h: 27: void TMR1_Init(void);
-[v _TMR1_Init `(v ~T0 @X0 0 ef ]
-"19 ./Display.h
-[; ;./Display.h: 19: void DISP_Init(void);
-[v _DISP_Init `(v ~T0 @X0 0 ef ]
-"34 ./SW.h
-[; ;./SW.h: 34: void SW_Init(void);
-[v _SW_Init `(v ~T0 @X0 0 ef ]
-"1437 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1437: extern volatile unsigned char TRISC __attribute__((address(0x087)));
-[v _TRISC `Vuc ~T0 @X0 0 e@135 ]
-"278
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 278: extern volatile unsigned char PORTC __attribute__((address(0x007)));
-[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
-"45 ./SSD.h
-[; ;./SSD.h: 45: void SSD_Update(void);
-[v _SSD_Update `(v ~T0 @X0 0 ef ]
-"36 ./SW.h
-[; ;./SW.h: 36: void SW_Update(void);
-[v _SW_Update `(v ~T0 @X0 0 ef ]
-"20 ./Display.h
-[; ;./Display.h: 20: void DISP_Update(void);
-[v _DISP_Update `(v ~T0 @X0 0 ef ]
-"36 ./VC.h
-[; ;./VC.h: 36: void VC_update(void);
-[v _VC_update `(v ~T0 @X0 0 ef ]
-"27 ./Motor.h
-[; ;./Motor.h: 27: void MOT_Update(void);
-[v _MOT_Update `(v ~T0 @X0 0 ef ]
-[t ~ __interrupt . k ]
-[t T1 __interrupt ]
-"30 ./TIMER_1.h
-[; ;./TIMER_1.h: 30: uint8 TMR1_CheckOverflow(void);
-[v _TMR1_CheckOverflow `(uc ~T0 @X0 0 ef ]
-"31
-[; ;./TIMER_1.h: 31: void TMR1_ISR(void);
-[v _TMR1_ISR `(v ~T0 @X0 0 ef ]
-"20 ./Timer.h
-[; ;./Timer.h: 20: tByte TMR0_CheckOverFlow(void);
-[v _TMR0_CheckOverFlow `(uc ~T0 @X0 0 ef ]
-"22
-[; ;./Timer.h: 22: void TMR0_ISR(void);
-[v _TMR0_ISR `(v ~T0 @X0 0 ef ]
+"2641 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2641: extern volatile __bit PS2 __attribute__((address(0x40A)));
+[v _PS2 `Vb ~T0 @X0 0 e@1034 ]
+"2638
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2638: extern volatile __bit PS1 __attribute__((address(0x409)));
+[v _PS1 `Vb ~T0 @X0 0 e@1033 ]
+"2635
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2635: extern volatile __bit PS0 __attribute__((address(0x408)));
+[v _PS0 `Vb ~T0 @X0 0 e@1032 ]
+"2644
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2644: extern volatile __bit PSA __attribute__((address(0x40B)));
+[v _PSA `Vb ~T0 @X0 0 e@1035 ]
+"2845
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2845: extern volatile __bit T0CS __attribute__((address(0x40D)));
+[v _T0CS `Vb ~T0 @X0 0 e@1037 ]
+"2881
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2881: extern volatile __bit TMR0IF __attribute__((address(0x5A)));
+[v _TMR0IF `Vb ~T0 @X0 0 e@90 ]
+"59
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 59: extern volatile unsigned char TMR0 __attribute__((address(0x001)));
+[v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
+"2878
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2878: extern volatile __bit TMR0IE __attribute__((address(0x5D)));
+[v _TMR0IE `Vb ~T0 @X0 0 e@93 ]
+"2569
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2569: extern volatile __bit GIE __attribute__((address(0x5F)));
+[v _GIE `Vb ~T0 @X0 0 e@95 ]
+"28 ./TIMER_1.h
+[; ;./TIMER_1.h: 28: void TMR1_Start(uint16 Degree);
+[v _TMR1_Start `(v ~T0 @X0 0 ef1`ui ]
+"29 ./Motor.h
+[; ;./Motor.h: 29: uint8 Get_actual(void);
+[v _Get_actual `(uc ~T0 @X0 0 ef ]
+"11 Timer.c
+[; ;Timer.c: 11: extern volatile uint8 ISR_FLAG;
+[v _ISR_FLAG `Vuc ~T0 @X0 0 e ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -236,128 +215,106 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"22 main.c
-[; ;main.c: 22: 
-[p x FOSC = XT ]
-"23
-[; ;main.c: 23: 
-[p x WDTE = OFF ]
-"24
-[; ;main.c: 24:     while(1)
-[p x PWRTE = OFF ]
-"25
-[; ;main.c: 25:     {
-[p x BOREN = OFF ]
-"26
-[; ;main.c: 26:         if(ISR_FLAG)
-[p x LVP = OFF ]
-"27
-[; ;main.c: 27:         {
-[p x CPD = OFF ]
-"28
-[; ;main.c: 28: 
-[p x WRT = OFF ]
-"29
-[; ;main.c: 29:             (((PORTC)) = (((PORTC)) ^(1 << (4))));
-[p x CP = OFF ]
-"34
-[; ;main.c: 34:             VC_update();
-[v _ISR_FLAG `Vuc ~T0 @X0 1 e ]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"37
-[; ;main.c: 37:         }
-[v _main `(i ~T0 @X0 1 ef ]
+"13 Timer.c
+[; ;Timer.c: 13: void TMR0_Init(void)
+[v _TMR0_Init `(v ~T0 @X0 1 ef ]
+"14
+[; ;Timer.c: 14: {
 {
-[e :U _main ]
+[e :U _TMR0_Init ]
 [f ]
-"42
-[e = _ISR_FLAG -> -> 0 `i `uc ]
-"43
-[e ( _VC_Init (1 . `E900 1 ]
-"44
-[e ( _TMR0_Init ..  ]
-"45
-[e ( _TMR0_Start ..  ]
-"46
-[e ( _TMR1_Init ..  ]
-"47
-[e ( _DISP_Init ..  ]
-"48
-[e ( _SW_Init ..  ]
-"51
-[e = _TRISC -> | & -> _TRISC `i ~ << -> 1 `i -> 4 `i << -> 0 `i -> 4 `i `uc ]
-"52
-[e = _PORTC -> | & -> _PORTC `i ~ << -> 1 `i -> 4 `i << -> 0 `i -> 4 `i `uc ]
-"55
-[e :U 97 ]
-"56
-{
-"57
-[e $ ! != -> _ISR_FLAG `i -> 0 `i 99  ]
-"58
-{
-"60
-[e = _PORTC -> ^ -> _PORTC `i << -> 1 `i -> 4 `i `uc ]
-"62
-[e ( _SSD_Update ..  ]
-"63
-[e ( _SW_Update ..  ]
-"64
-[e ( _DISP_Update ..  ]
-"65
-[e ( _VC_update ..  ]
-"66
-[e ( _MOT_Update ..  ]
-"67
-[e = _ISR_FLAG -> -> 0 `i `uc ]
-"68
-}
-[e :U 99 ]
-"69
-}
-[e :U 96 ]
-[e $U 97  ]
-[e :U 98 ]
-"80
-[; ;main.c: 80: }
+"16
+[; ;Timer.c: 16:  PS2 = 1; PS1 = 1; PS0 = 1; PSA = 0;
+[e = _PS2 -> -> 1 `i `b ]
+[e = _PS1 -> -> 1 `i `b ]
+[e = _PS0 -> -> 1 `i `b ]
+[e = _PSA -> -> 0 `i `b ]
+"19
+[; ;Timer.c: 19:  (T0CS = 1);
+[e = _T0CS -> -> 1 `i `b ]
+"21
+[; ;Timer.c: 21: }
 [e :UE 95 ]
 }
-[v $root$_Generic_ISR `(v ~T0 @X0 0 e ]
-"82
-[; ;main.c: 82: void __attribute__((picinterrupt(("")))) Generic_ISR()
-[v _Generic_ISR `(v ~T1 @X0 1 ef ]
-"83
-[; ;main.c: 83: {
+"23
+[; ;Timer.c: 23: void TMR0_Start(void)
+[v _TMR0_Start `(v ~T0 @X0 1 ef ]
+"24
+[; ;Timer.c: 24: {
 {
-[e :U _Generic_ISR ]
+[e :U _TMR0_Start ]
 [f ]
-"86
-[; ;main.c: 86:     if(TMR1_CheckOverflow())
-[e $ ! != -> ( _TMR1_CheckOverflow ..  `i -> 0 `i 101  ]
-"87
-[; ;main.c: 87:     {
-{
-"88
-[; ;main.c: 88:         TMR1_ISR();
-[e ( _TMR1_ISR ..  ]
-"89
-[; ;main.c: 89:     }
+"26
+[; ;Timer.c: 26:  (TMR0IF = 0);
+[e = _TMR0IF -> -> 0 `i `b ]
+"28
+[; ;Timer.c: 28:  (TMR0 = 256 - ((78)));
+[e = _TMR0 -> - -> 256 `i -> 78 `i `uc ]
+"30
+[; ;Timer.c: 30:  (TMR0IE = 1);
+[e = _TMR0IE -> -> 1 `i `b ]
+"31
+[; ;Timer.c: 31:  (GIE = 1);
+[e = _GIE -> -> 1 `i `b ]
+"33
+[; ;Timer.c: 33:  (T0CS = 0);
+[e = _T0CS -> -> 0 `i `b ]
+"35
+[; ;Timer.c: 35: }
+[e :UE 96 ]
 }
-[e :U 101 ]
-"94
-[; ;main.c: 94:     if(TMR0_CheckOverFlow())
-[e $ ! != -> ( _TMR0_CheckOverFlow ..  `i -> 0 `i 102  ]
-"95
-[; ;main.c: 95:     {
+"36
+[; ;Timer.c: 36: uint8 TMR0_CheckOverFlow(void)
+[v _TMR0_CheckOverFlow `(uc ~T0 @X0 1 ef ]
+"37
+[; ;Timer.c: 37: {
 {
-"96
-[; ;main.c: 96:         TMR0_ISR();
-[e ( _TMR0_ISR ..  ]
-"97
-[; ;main.c: 97:     }
+[e :U _TMR0_CheckOverFlow ]
+[f ]
+"39
+[; ;Timer.c: 39:  return (TMR0IF);
+[e ) -> _TMR0IF `uc ]
+[e $UE 97  ]
+"41
+[; ;Timer.c: 41: }
+[e :UE 97 ]
 }
-[e :U 102 ]
-"99
-[; ;main.c: 99: }
-[e :UE 100 ]
+"42
+[; ;Timer.c: 42: void TMR0_Stop(void)
+[v _TMR0_Stop `(v ~T0 @X0 1 ef ]
+"43
+[; ;Timer.c: 43: {
+{
+[e :U _TMR0_Stop ]
+[f ]
+"45
+[; ;Timer.c: 45:  (T0CS = 1);
+[e = _T0CS -> -> 1 `i `b ]
+"47
+[; ;Timer.c: 47: }
+[e :UE 98 ]
+}
+"49
+[; ;Timer.c: 49: void TMR0_ISR(void)
+[v _TMR0_ISR `(v ~T0 @X0 1 ef ]
+"50
+[; ;Timer.c: 50: {
+{
+[e :U _TMR0_ISR ]
+[f ]
+"56
+[; ;Timer.c: 56:     TMR1_Start(Get_actual());
+[e ( _TMR1_Start (1 -> ( _Get_actual ..  `ui ]
+"60
+[; ;Timer.c: 60:  (TMR0IF = 0);
+[e = _TMR0IF -> -> 0 `i `b ]
+"63
+[; ;Timer.c: 63:  (TMR0 = 256 - ((78)));
+[e = _TMR0 -> - -> 256 `i -> 78 `i `uc ]
+"66
+[; ;Timer.c: 66:     ISR_FLAG = 1;
+[e = _ISR_FLAG -> -> 1 `i `uc ]
+"70
+[; ;Timer.c: 70: }
+[e :UE 99 ]
 }

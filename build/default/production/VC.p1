@@ -1,61 +1,32 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"43 main.c
-[c E900 140 90 10 .. ]
-[n E900 . Min_speed Mid_speed Max_speed  ]
-"35 ./VC.h
-[; ;./VC.h: 35: void VC_Init(tVC_Motor_speed speed);
-[v _VC_Init `(v ~T0 @X0 0 ef1`E900 ]
-"18 ./Timer.h
-[; ;./Timer.h: 18: void TMR0_Init(void);
-[v _TMR0_Init `(v ~T0 @X0 0 ef ]
-"19
-[; ;./Timer.h: 19: void TMR0_Start(void);
-[v _TMR0_Start `(v ~T0 @X0 0 ef ]
-"27 ./TIMER_1.h
-[; ;./TIMER_1.h: 27: void TMR1_Init(void);
-[v _TMR1_Init `(v ~T0 @X0 0 ef ]
-"19 ./Display.h
-[; ;./Display.h: 19: void DISP_Init(void);
-[v _DISP_Init `(v ~T0 @X0 0 ef ]
-"34 ./SW.h
-[; ;./SW.h: 34: void SW_Init(void);
-[v _SW_Init `(v ~T0 @X0 0 ef ]
-"1437 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1437: extern volatile unsigned char TRISC __attribute__((address(0x087)));
-[v _TRISC `Vuc ~T0 @X0 0 e@135 ]
-"278
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 278: extern volatile unsigned char PORTC __attribute__((address(0x007)));
-[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
-"45 ./SSD.h
-[; ;./SSD.h: 45: void SSD_Update(void);
-[v _SSD_Update `(v ~T0 @X0 0 ef ]
-"36 ./SW.h
-[; ;./SW.h: 36: void SW_Update(void);
-[v _SW_Update `(v ~T0 @X0 0 ef ]
-"20 ./Display.h
-[; ;./Display.h: 20: void DISP_Update(void);
-[v _DISP_Update `(v ~T0 @X0 0 ef ]
-"36 ./VC.h
-[; ;./VC.h: 36: void VC_update(void);
-[v _VC_update `(v ~T0 @X0 0 ef ]
-"27 ./Motor.h
-[; ;./Motor.h: 27: void MOT_Update(void);
-[v _MOT_Update `(v ~T0 @X0 0 ef ]
-[t ~ __interrupt . k ]
-[t T1 __interrupt ]
-"30 ./TIMER_1.h
-[; ;./TIMER_1.h: 30: uint8 TMR1_CheckOverflow(void);
-[v _TMR1_CheckOverflow `(uc ~T0 @X0 0 ef ]
-"31
-[; ;./TIMER_1.h: 31: void TMR1_ISR(void);
-[v _TMR1_ISR `(v ~T0 @X0 0 ef ]
-"20 ./Timer.h
-[; ;./Timer.h: 20: tByte TMR0_CheckOverFlow(void);
-[v _TMR0_CheckOverFlow `(uc ~T0 @X0 0 ef ]
-"22
-[; ;./Timer.h: 22: void TMR0_ISR(void);
-[v _TMR0_ISR `(v ~T0 @X0 0 ef ]
+"25 VC.c
+[; ;VC.c: 25: static tVC_Motor_speed Motor_speed ;
+[c E850 140 90 10 .. ]
+[n E850 . Min_speed Mid_speed Max_speed  ]
+"26 ./Motor.h
+[; ;./Motor.h: 26: void MOT_Init(tVC_Motor_speed M);
+[v _MOT_Init `(v ~T0 @X0 0 ef1`E850 ]
+"216 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 216: extern volatile unsigned char PORTB __attribute__((address(0x006)));
+[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
+"1375
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1375: extern volatile unsigned char TRISB __attribute__((address(0x086)));
+[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"28 VC.c
+[; ;VC.c: 28: static void handling_switch_events(void);
+[v _handling_switch_events `(v ~T0 @X0 0 sf ]
+"28 ./Motor.h
+[; ;./Motor.h: 28: void MOT_SetTargetAngle(tVC_Motor_speed M);
+[v _MOT_SetTargetAngle `(v ~T0 @X0 0 ef1`E850 ]
+"104 VC.c
+[; ;VC.c: 104:     if(SW_GetState(SW_PLUS) == SW_PRE_PRESSED)
+[c E859 0 1 2 .. ]
+[n E859 . SW_PLUS SW_MINUS SW_PRE  ]
+[c E864 0 1 2 3 .. ]
+[n E864 . SW_RELEASED SW_PRE_PRESSED SW_PRESSED SW_PRE_RELEASED  ]
+"35 ./SW.h
+[; ;./SW.h: 35: tSW_State SW_GetState(tSW sw);
+[v _SW_GetState `(E864 ~T0 @X0 0 ef1`E859 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -236,128 +207,369 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"22 main.c
-[; ;main.c: 22: 
-[p x FOSC = XT ]
-"23
-[; ;main.c: 23: 
-[p x WDTE = OFF ]
-"24
-[; ;main.c: 24:     while(1)
-[p x PWRTE = OFF ]
-"25
-[; ;main.c: 25:     {
-[p x BOREN = OFF ]
-"26
-[; ;main.c: 26:         if(ISR_FLAG)
-[p x LVP = OFF ]
-"27
-[; ;main.c: 27:         {
-[p x CPD = OFF ]
-"28
-[; ;main.c: 28: 
-[p x WRT = OFF ]
-"29
-[; ;main.c: 29:             (((PORTC)) = (((PORTC)) ^(1 << (4))));
-[p x CP = OFF ]
-"34
-[; ;main.c: 34:             VC_update();
-[v _ISR_FLAG `Vuc ~T0 @X0 1 e ]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"37
-[; ;main.c: 37:         }
-[v _main `(i ~T0 @X0 1 ef ]
+"25 VC.c
+[; ;VC.c: 25: static tVC_Motor_speed Motor_speed ;
+[v _Motor_speed `E850 ~T0 @X0 1 s ]
+"31
+[; ;VC.c: 31: static uint16 PRESSURE_COUNTER ;
+[v _PRESSURE_COUNTER `ui ~T0 @X0 1 s ]
+"35
+[; ;VC.c: 35: void VC_Init(tVC_Motor_speed speed)
+[v _VC_Init `(v ~T0 @X0 1 ef1`E850 ]
+"36
+[; ;VC.c: 36: {
 {
-[e :U _main ]
+[e :U _VC_Init ]
+"35
+[; ;VC.c: 35: void VC_Init(tVC_Motor_speed speed)
+[v _speed `E850 ~T0 @X0 1 r1 ]
+"36
+[; ;VC.c: 36: {
 [f ]
+"39
+[; ;VC.c: 39:     Motor_speed = speed;
+[e = _Motor_speed _speed ]
 "42
-[e = _ISR_FLAG -> -> 0 `i `uc ]
-"43
-[e ( _VC_Init (1 . `E900 1 ]
-"44
-[e ( _TMR0_Init ..  ]
+[; ;VC.c: 42:     MOT_Init(speed);
+[e ( _MOT_Init (1 _speed ]
 "45
-[e ( _TMR0_Start ..  ]
+[; ;VC.c: 45:     ((((PORTB))) = (((PORTB)) & (~(1 << (3))))|((0) << (3)));
+[e = _PORTB -> | & -> _PORTB `i ~ << -> 1 `i -> 3 `i << -> 0 `i -> 3 `i `uc ]
 "46
-[e ( _TMR1_Init ..  ]
-"47
-[e ( _DISP_Init ..  ]
+[; ;VC.c: 46:     ((((TRISB))) = (((TRISB)) & (~(1 << (3))))|(0 << (3)));
+[e = _TRISB -> | & -> _TRISB `i ~ << -> 1 `i -> 3 `i << -> 0 `i -> 3 `i `uc ]
 "48
-[e ( _SW_Init ..  ]
-"51
-[e = _TRISC -> | & -> _TRISC `i ~ << -> 1 `i -> 4 `i << -> 0 `i -> 4 `i `uc ]
-"52
-[e = _PORTC -> | & -> _PORTC `i ~ << -> 1 `i -> 4 `i << -> 0 `i -> 4 `i `uc ]
-"55
-[e :U 97 ]
-"56
-{
-"57
-[e $ ! != -> _ISR_FLAG `i -> 0 `i 99  ]
-"58
-{
-"60
-[e = _PORTC -> ^ -> _PORTC `i << -> 1 `i -> 4 `i `uc ]
-"62
-[e ( _SSD_Update ..  ]
-"63
-[e ( _SW_Update ..  ]
-"64
-[e ( _DISP_Update ..  ]
-"65
-[e ( _VC_update ..  ]
-"66
-[e ( _MOT_Update ..  ]
-"67
-[e = _ISR_FLAG -> -> 0 `i `uc ]
-"68
-}
-[e :U 99 ]
-"69
-}
-[e :U 96 ]
-[e $U 97  ]
-[e :U 98 ]
-"80
-[; ;main.c: 80: }
+[; ;VC.c: 48:     PRESSURE_COUNTER = 0;
+[e = _PRESSURE_COUNTER -> -> 0 `i `ui ]
+"50
+[; ;VC.c: 50: }
 [e :UE 95 ]
 }
-[v $root$_Generic_ISR `(v ~T0 @X0 0 e ]
-"82
-[; ;main.c: 82: void __attribute__((picinterrupt(("")))) Generic_ISR()
-[v _Generic_ISR `(v ~T1 @X0 1 ef ]
-"83
-[; ;main.c: 83: {
+"57
+[; ;VC.c: 57: void VC_update(void)
+[v _VC_update `(v ~T0 @X0 1 ef ]
+"58
+[; ;VC.c: 58: {
 {
-[e :U _Generic_ISR ]
+[e :U _VC_update ]
 [f ]
+"61
+[; ;VC.c: 61:      static uint8 VC_counter = 10;
+[v F900 `uc ~T0 @X0 1 s VC_counter ]
+[i F900
+-> -> 10 `i `uc
+]
+"64
+[; ;VC.c: 64:      VC_counter += (10);
+[e =+ F900 -> -> 10 `i `uc ]
+"67
+[; ;VC.c: 67:      if(VC_counter != (20))
+[e $ ! != -> F900 `i -> 20 `i 97  ]
+"68
+[; ;VC.c: 68:      {
+{
+"69
+[; ;VC.c: 69:          return;
+[e $UE 96  ]
+"70
+[; ;VC.c: 70:      }
+}
+[e :U 97 ]
+"72
+[; ;VC.c: 72:      VC_counter = 0;
+[e = F900 -> -> 0 `i `uc ]
+"83
+[; ;VC.c: 83:    handling_switch_events();
+[e ( _handling_switch_events ..  ]
 "86
-[; ;main.c: 86:     if(TMR1_CheckOverflow())
-[e $ ! != -> ( _TMR1_CheckOverflow ..  `i -> 0 `i 101  ]
+[; ;VC.c: 86:    MOT_SetTargetAngle(Motor_speed);
+[e ( _MOT_SetTargetAngle (1 _Motor_speed ]
 "87
-[; ;main.c: 87:     {
-{
-"88
-[; ;main.c: 88:         TMR1_ISR();
-[e ( _TMR1_ISR ..  ]
-"89
-[; ;main.c: 89:     }
+[; ;VC.c: 87: }
+[e :UE 96 ]
 }
-[e :U 101 ]
-"94
-[; ;main.c: 94:     if(TMR0_CheckOverFlow())
-[e $ ! != -> ( _TMR0_CheckOverFlow ..  `i -> 0 `i 102  ]
+"92
+[; ;VC.c: 92: tVC_Motor_speed VC_GetSpeed(void)
+[v _VC_GetSpeed `(E850 ~T0 @X0 1 ef ]
+"93
+[; ;VC.c: 93: {
+{
+[e :U _VC_GetSpeed ]
+[f ]
 "95
-[; ;main.c: 95:     {
-{
-"96
-[; ;main.c: 96:         TMR0_ISR();
-[e ( _TMR0_ISR ..  ]
+[; ;VC.c: 95:     return Motor_speed;
+[e ) _Motor_speed ]
+[e $UE 98  ]
 "97
-[; ;main.c: 97:     }
+[; ;VC.c: 97: }
+[e :UE 98 ]
 }
+"100
+[; ;VC.c: 100:  static void handling_switch_events(void)
+[v _handling_switch_events `(v ~T0 @X0 1 sf ]
+"101
+[; ;VC.c: 101: {
+{
+[e :U _handling_switch_events ]
+[f ]
+"104
+[; ;VC.c: 104:     if(SW_GetState(SW_PLUS) == SW_PRE_PRESSED)
+[e $ ! == -> ( _SW_GetState (1 . `E859 0 `ui -> . `E864 1 `ui 100  ]
+"105
+[; ;VC.c: 105:     {
+{
+"106
+[; ;VC.c: 106:         switch(Motor_speed)
+[e $U 102  ]
+"107
+[; ;VC.c: 107:         {
+{
+"108
+[; ;VC.c: 108:             case Min_speed:
+[e :U 103 ]
+"109
+[; ;VC.c: 109:             {
+{
+"110
+[; ;VC.c: 110:                 Motor_speed = Mid_speed;
+[e = _Motor_speed . `E850 1 ]
+"111
+[; ;VC.c: 111:                 break;
+[e $U 101  ]
+"112
+[; ;VC.c: 112:             }
+}
+"114
+[; ;VC.c: 114:             case Mid_speed:
+[e :U 104 ]
+"115
+[; ;VC.c: 115:             {
+{
+"116
+[; ;VC.c: 116:                 Motor_speed = Max_speed;
+[e = _Motor_speed . `E850 2 ]
+"117
+[; ;VC.c: 117:                 break;
+[e $U 101  ]
+"118
+[; ;VC.c: 118:             }
+}
+"120
+[; ;VC.c: 120:             case Max_speed:
+[e :U 105 ]
+"121
+[; ;VC.c: 121:             {
+{
+"123
+[; ;VC.c: 123:                 break;
+[e $U 101  ]
+"124
+[; ;VC.c: 124:             }
+}
+"127
+[; ;VC.c: 127:             default:
+[e :U 106 ]
+"128
+[; ;VC.c: 128:                 break;
+[e $U 101  ]
+"131
+[; ;VC.c: 131:         }
+}
+[e $U 101  ]
 [e :U 102 ]
-"99
-[; ;main.c: 99: }
-[e :UE 100 ]
+[e [\ -> _Motor_speed `ui , $ -> . `E850 0 `ui 103
+ , $ -> . `E850 1 `ui 104
+ , $ -> . `E850 2 `ui 105
+ 106 ]
+[e :U 101 ]
+"134
+[; ;VC.c: 134:     }
+}
+[e :U 100 ]
+"136
+[; ;VC.c: 136:     if(SW_GetState(SW_MINUS) == (SW_PRE_PRESSED))
+[e $ ! == -> ( _SW_GetState (1 . `E859 1 `ui -> . `E864 1 `ui 107  ]
+"137
+[; ;VC.c: 137:     {
+{
+"139
+[; ;VC.c: 139:         switch (Motor_speed)
+[e $U 109  ]
+"140
+[; ;VC.c: 140:         {
+{
+"141
+[; ;VC.c: 141:             case Min_speed:
+[e :U 110 ]
+"142
+[; ;VC.c: 142:             {
+{
+"144
+[; ;VC.c: 144:                 break;
+[e $U 108  ]
+"145
+[; ;VC.c: 145:             }
+}
+"147
+[; ;VC.c: 147:             case Mid_speed:
+[e :U 111 ]
+"148
+[; ;VC.c: 148:             {
+{
+"149
+[; ;VC.c: 149:                 Motor_speed = Min_speed;
+[e = _Motor_speed . `E850 0 ]
+"150
+[; ;VC.c: 150:                 break;
+[e $U 108  ]
+"151
+[; ;VC.c: 151:             }
+}
+"153
+[; ;VC.c: 153:             case Max_speed:
+[e :U 112 ]
+"154
+[; ;VC.c: 154:             {
+{
+"155
+[; ;VC.c: 155:                 Motor_speed = Mid_speed;
+[e = _Motor_speed . `E850 1 ]
+"156
+[; ;VC.c: 156:                 break;
+[e $U 108  ]
+"157
+[; ;VC.c: 157:             }
+}
+"160
+[; ;VC.c: 160:             default:
+[e :U 113 ]
+"161
+[; ;VC.c: 161:                 break;
+[e $U 108  ]
+"164
+[; ;VC.c: 164:         }
+}
+[e $U 108  ]
+[e :U 109 ]
+[e [\ -> _Motor_speed `ui , $ -> . `E850 0 `ui 110
+ , $ -> . `E850 1 `ui 111
+ , $ -> . `E850 2 `ui 112
+ 113 ]
+[e :U 108 ]
+"166
+[; ;VC.c: 166:     }
+}
+[e :U 107 ]
+"168
+[; ;VC.c: 168:      if(SW_GetState(SW_PRE) == (SW_PRESSED))
+[e $ ! == -> ( _SW_GetState (1 . `E859 2 `ui -> . `E864 2 `ui 114  ]
+"169
+[; ;VC.c: 169:        {
+{
+"173
+[; ;VC.c: 173:                 PRESSURE_COUNTER += (20);
+[e =+ _PRESSURE_COUNTER -> -> 20 `i `ui ]
+"176
+[; ;VC.c: 176:              if(PRESSURE_COUNTER != (30000))
+[e $ ! != _PRESSURE_COUNTER -> -> 30000 `i `ui 115  ]
+"177
+[; ;VC.c: 177:              {
+{
+"178
+[; ;VC.c: 178:                  return;
+[e $UE 99  ]
+"179
+[; ;VC.c: 179:              }
+}
+[e :U 115 ]
+"181
+[; ;VC.c: 181:               PRESSURE_COUNTER = 0;
+[e = _PRESSURE_COUNTER -> -> 0 `i `ui ]
+"184
+[; ;VC.c: 184:              switch(Motor_speed)
+[e $U 117  ]
+"185
+[; ;VC.c: 185:              {
+{
+"186
+[; ;VC.c: 186:                  case Min_speed:
+[e :U 118 ]
+"187
+[; ;VC.c: 187:                  {
+{
+"189
+[; ;VC.c: 189:                      break;
+[e $U 116  ]
+"190
+[; ;VC.c: 190:                  }
+}
+"192
+[; ;VC.c: 192:                  case Mid_speed:
+[e :U 119 ]
+"193
+[; ;VC.c: 193:                  {
+{
+"194
+[; ;VC.c: 194:                      Motor_speed = Min_speed;
+[e = _Motor_speed . `E850 0 ]
+"195
+[; ;VC.c: 195:                      break;
+[e $U 116  ]
+"196
+[; ;VC.c: 196:                  }
+}
+"198
+[; ;VC.c: 198:                  case Max_speed:
+[e :U 120 ]
+"199
+[; ;VC.c: 199:                  {
+{
+"200
+[; ;VC.c: 200:                      Motor_speed = Mid_speed;
+[e = _Motor_speed . `E850 1 ]
+"201
+[; ;VC.c: 201:                      break;
+[e $U 116  ]
+"202
+[; ;VC.c: 202:                  }
+}
+"205
+[; ;VC.c: 205:                  default:
+[e :U 121 ]
+"206
+[; ;VC.c: 206:                      break;
+[e $U 116  ]
+"207
+[; ;VC.c: 207:              }
+}
+[e $U 116  ]
+[e :U 117 ]
+[e [\ -> _Motor_speed `ui , $ -> . `E850 0 `ui 118
+ , $ -> . `E850 1 `ui 119
+ , $ -> . `E850 2 `ui 120
+ 121 ]
+[e :U 116 ]
+"211
+[; ;VC.c: 211:        }
+}
+[e $U 122  ]
+"213
+[; ;VC.c: 213:      else
+[e :U 114 ]
+"214
+[; ;VC.c: 214:      {
+{
+"215
+[; ;VC.c: 215:            PRESSURE_COUNTER = 0;
+[e = _PRESSURE_COUNTER -> -> 0 `i `ui ]
+"217
+[; ;VC.c: 217:            ((((TRISB))) = (((TRISB)) & (~(1 << (3))))|(0 << (3)));
+[e = _TRISB -> | & -> _TRISB `i ~ << -> 1 `i -> 3 `i << -> 0 `i -> 3 `i `uc ]
+"218
+[; ;VC.c: 218:      }
+}
+[e :U 122 ]
+"220
+[; ;VC.c: 220:  }
+[e :UE 99 ]
 }

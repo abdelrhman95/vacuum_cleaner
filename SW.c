@@ -1,7 +1,7 @@
 #include "Main.h"
 #include "Port.h"
 #include "SW.h"
-
+#include "Timer.h"
 /* SW_Update period */
 #define SW_PERIOD_MS   (20)
 

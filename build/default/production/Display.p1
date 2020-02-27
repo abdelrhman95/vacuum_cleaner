@@ -1,61 +1,23 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"43 main.c
-[c E900 140 90 10 .. ]
-[n E900 . Min_speed Mid_speed Max_speed  ]
-"35 ./VC.h
-[; ;./VC.h: 35: void VC_Init(tVC_Motor_speed speed);
-[v _VC_Init `(v ~T0 @X0 0 ef1`E900 ]
-"18 ./Timer.h
-[; ;./Timer.h: 18: void TMR0_Init(void);
-[v _TMR0_Init `(v ~T0 @X0 0 ef ]
-"19
-[; ;./Timer.h: 19: void TMR0_Start(void);
-[v _TMR0_Start `(v ~T0 @X0 0 ef ]
-"27 ./TIMER_1.h
-[; ;./TIMER_1.h: 27: void TMR1_Init(void);
-[v _TMR1_Init `(v ~T0 @X0 0 ef ]
-"19 ./Display.h
-[; ;./Display.h: 19: void DISP_Init(void);
-[v _DISP_Init `(v ~T0 @X0 0 ef ]
-"34 ./SW.h
-[; ;./SW.h: 34: void SW_Init(void);
-[v _SW_Init `(v ~T0 @X0 0 ef ]
-"1437 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1437: extern volatile unsigned char TRISC __attribute__((address(0x087)));
-[v _TRISC `Vuc ~T0 @X0 0 e@135 ]
-"278
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 278: extern volatile unsigned char PORTC __attribute__((address(0x007)));
-[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
-"45 ./SSD.h
-[; ;./SSD.h: 45: void SSD_Update(void);
-[v _SSD_Update `(v ~T0 @X0 0 ef ]
-"36 ./SW.h
-[; ;./SW.h: 36: void SW_Update(void);
-[v _SW_Update `(v ~T0 @X0 0 ef ]
-"20 ./Display.h
-[; ;./Display.h: 20: void DISP_Update(void);
-[v _DISP_Update `(v ~T0 @X0 0 ef ]
-"36 ./VC.h
-[; ;./VC.h: 36: void VC_update(void);
-[v _VC_update `(v ~T0 @X0 0 ef ]
-"27 ./Motor.h
-[; ;./Motor.h: 27: void MOT_Update(void);
-[v _MOT_Update `(v ~T0 @X0 0 ef ]
-[t ~ __interrupt . k ]
-[t T1 __interrupt ]
-"30 ./TIMER_1.h
-[; ;./TIMER_1.h: 30: uint8 TMR1_CheckOverflow(void);
-[v _TMR1_CheckOverflow `(uc ~T0 @X0 0 ef ]
-"31
-[; ;./TIMER_1.h: 31: void TMR1_ISR(void);
-[v _TMR1_ISR `(v ~T0 @X0 0 ef ]
-"20 ./Timer.h
-[; ;./Timer.h: 20: tByte TMR0_CheckOverFlow(void);
-[v _TMR0_CheckOverFlow `(uc ~T0 @X0 0 ef ]
-"22
-[; ;./Timer.h: 22: void TMR0_ISR(void);
-[v _TMR0_ISR `(v ~T0 @X0 0 ef ]
+"23 Display.c
+[; ;Display.c: 23:     SSD_Init(SSD_FIRST, SSD_NULL);
+[c E863 0 1 2 .. ]
+[n E863 . SSD_FIRST SSD_SECONED SSD_THIRD  ]
+[c E872 0 1 2 3 .. ]
+[n E872 . SSD_Low SSD_Mid SSD_High SSD_NULL  ]
+"44 ./SSD.h
+[; ;./SSD.h: 44: void SSD_Init(tSSD ssd,tSSD_Symbol symbol);
+[v _SSD_Init `(v ~T0 @X0 0 ef2`E863`E872 ]
+"47
+[; ;./SSD.h: 47: void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol);
+[v _SSD_SetValue `(v ~T0 @X0 0 ef2`E863`E872 ]
+"79 Display.c
+[; ;Display.c: 79:         }
+[c E850 140 90 10 .. ]
+[n E850 . Min_speed Mid_speed Max_speed  ]
+"37 ./VC.h
+[; ;./VC.h: 37: tVC_Motor_speed VC_GetSpeed(void);
+[v _VC_GetSpeed `(E850 ~T0 @X0 0 ef ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -236,128 +198,146 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"22 main.c
-[; ;main.c: 22: 
-[p x FOSC = XT ]
-"23
-[; ;main.c: 23: 
-[p x WDTE = OFF ]
-"24
-[; ;main.c: 24:     while(1)
-[p x PWRTE = OFF ]
-"25
-[; ;main.c: 25:     {
-[p x BOREN = OFF ]
-"26
-[; ;main.c: 26:         if(ISR_FLAG)
-[p x LVP = OFF ]
-"27
-[; ;main.c: 27:         {
-[p x CPD = OFF ]
-"28
-[; ;main.c: 28: 
-[p x WRT = OFF ]
-"29
-[; ;main.c: 29:             (((PORTC)) = (((PORTC)) ^(1 << (4))));
-[p x CP = OFF ]
-"34
-[; ;main.c: 34:             VC_update();
-[v _ISR_FLAG `Vuc ~T0 @X0 1 e ]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"37
-[; ;main.c: 37:         }
-[v _main `(i ~T0 @X0 1 ef ]
+"18 Display.c
+[; ;Display.c: 18: void DISP_Init(void)
+[v _DISP_Init `(v ~T0 @X0 1 ef ]
+"19
+[; ;Display.c: 19: {
 {
-[e :U _main ]
+[e :U _DISP_Init ]
 [f ]
-"42
-[e = _ISR_FLAG -> -> 0 `i `uc ]
-"43
-[e ( _VC_Init (1 . `E900 1 ]
-"44
-[e ( _TMR0_Init ..  ]
-"45
-[e ( _TMR0_Start ..  ]
-"46
-[e ( _TMR1_Init ..  ]
-"47
-[e ( _DISP_Init ..  ]
-"48
-[e ( _SW_Init ..  ]
-"51
-[e = _TRISC -> | & -> _TRISC `i ~ << -> 1 `i -> 4 `i << -> 0 `i -> 4 `i `uc ]
-"52
-[e = _PORTC -> | & -> _PORTC `i ~ << -> 1 `i -> 4 `i << -> 0 `i -> 4 `i `uc ]
-"55
-[e :U 97 ]
-"56
-{
-"57
-[e $ ! != -> _ISR_FLAG `i -> 0 `i 99  ]
-"58
-{
-"60
-[e = _PORTC -> ^ -> _PORTC `i << -> 1 `i -> 4 `i `uc ]
-"62
-[e ( _SSD_Update ..  ]
-"63
-[e ( _SW_Update ..  ]
-"64
-[e ( _DISP_Update ..  ]
-"65
-[e ( _VC_update ..  ]
-"66
-[e ( _MOT_Update ..  ]
-"67
-[e = _ISR_FLAG -> -> 0 `i `uc ]
-"68
-}
-[e :U 99 ]
-"69
-}
-[e :U 96 ]
-[e $U 97  ]
-[e :U 98 ]
-"80
-[; ;main.c: 80: }
+"23
+[; ;Display.c: 23:     SSD_Init(SSD_FIRST, SSD_NULL);
+[e ( _SSD_Init (2 , . `E863 0 . `E872 3 ]
+"24
+[; ;Display.c: 24:     SSD_Init(SSD_SECONED, SSD_NULL);
+[e ( _SSD_Init (2 , . `E863 1 . `E872 3 ]
+"25
+[; ;Display.c: 25:     SSD_Init(SSD_THIRD, SSD_NULL);
+[e ( _SSD_Init (2 , . `E863 2 . `E872 3 ]
+"27
+[; ;Display.c: 27: }
 [e :UE 95 ]
 }
-[v $root$_Generic_ISR `(v ~T0 @X0 0 e ]
-"82
-[; ;main.c: 82: void __attribute__((picinterrupt(("")))) Generic_ISR()
-[v _Generic_ISR `(v ~T1 @X0 1 ef ]
-"83
-[; ;main.c: 83: {
+"31
+[; ;Display.c: 31: void DISP_Update(void)
+[v _DISP_Update `(v ~T0 @X0 1 ef ]
+"32
+[; ;Display.c: 32: {
 {
-[e :U _Generic_ISR ]
+[e :U _DISP_Update ]
 [f ]
-"86
-[; ;main.c: 86:     if(TMR1_CheckOverflow())
-[e $ ! != -> ( _TMR1_CheckOverflow ..  `i -> 0 `i 101  ]
-"87
-[; ;main.c: 87:     {
+"34
+[; ;Display.c: 34:     static uint16 DISP_counter = 0;
+[v F903 `ui ~T0 @X0 1 s DISP_counter ]
+[i F903
+-> -> 0 `i `ui
+]
+"37
+[; ;Display.c: 37:     DISP_counter += (10);
+[e =+ F903 -> -> 10 `i `ui ]
+"39
+[; ;Display.c: 39:     if(DISP_counter != (20))
+[e $ ! != F903 -> -> 20 `i `ui 97  ]
+"40
+[; ;Display.c: 40:     {
 {
-"88
-[; ;main.c: 88:         TMR1_ISR();
-[e ( _TMR1_ISR ..  ]
-"89
-[; ;main.c: 89:     }
+"41
+[; ;Display.c: 41:         return ;
+[e $UE 96  ]
+"42
+[; ;Display.c: 42:     }
 }
+[e :U 97 ]
+"44
+[; ;Display.c: 44:     DISP_counter = 0;
+[e = F903 -> -> 0 `i `ui ]
+"49
+[; ;Display.c: 49:      switch(VC_GetSpeed())
+[e $U 99  ]
+"50
+[; ;Display.c: 50:         {
+{
+"51
+[; ;Display.c: 51:             case Min_speed:
+[e :U 100 ]
+"52
+[; ;Display.c: 52:             {
+{
+"53
+[; ;Display.c: 53:                  SSD_SetValue(SSD_FIRST, SSD_Low);
+[e ( _SSD_SetValue (2 , . `E863 0 . `E872 0 ]
+"54
+[; ;Display.c: 54:                  SSD_SetValue(SSD_SECONED, SSD_NULL);
+[e ( _SSD_SetValue (2 , . `E863 1 . `E872 3 ]
+"55
+[; ;Display.c: 55:                  SSD_SetValue(SSD_THIRD, SSD_NULL);
+[e ( _SSD_SetValue (2 , . `E863 2 . `E872 3 ]
+"57
+[; ;Display.c: 57:                   break;
+[e $U 98  ]
+"58
+[; ;Display.c: 58:             }
+}
+"60
+[; ;Display.c: 60:             case Mid_speed:
 [e :U 101 ]
-"94
-[; ;main.c: 94:     if(TMR0_CheckOverFlow())
-[e $ ! != -> ( _TMR0_CheckOverFlow ..  `i -> 0 `i 102  ]
-"95
-[; ;main.c: 95:     {
+"61
+[; ;Display.c: 61:             {
 {
-"96
-[; ;main.c: 96:         TMR0_ISR();
-[e ( _TMR0_ISR ..  ]
-"97
-[; ;main.c: 97:     }
+"62
+[; ;Display.c: 62:                  SSD_SetValue(SSD_FIRST, SSD_Low);
+[e ( _SSD_SetValue (2 , . `E863 0 . `E872 0 ]
+"63
+[; ;Display.c: 63:                  SSD_SetValue(SSD_SECONED, SSD_Mid);
+[e ( _SSD_SetValue (2 , . `E863 1 . `E872 1 ]
+"64
+[; ;Display.c: 64:                  SSD_SetValue(SSD_THIRD, SSD_NULL);
+[e ( _SSD_SetValue (2 , . `E863 2 . `E872 3 ]
+"65
+[; ;Display.c: 65:                  break;
+[e $U 98  ]
+"66
+[; ;Display.c: 66:             }
 }
+"68
+[; ;Display.c: 68:             case Max_speed:
 [e :U 102 ]
-"99
-[; ;main.c: 99: }
-[e :UE 100 ]
+"69
+[; ;Display.c: 69:             {
+{
+"70
+[; ;Display.c: 70:                 SSD_SetValue(SSD_FIRST,SSD_Low);
+[e ( _SSD_SetValue (2 , . `E863 0 . `E872 0 ]
+"71
+[; ;Display.c: 71:                 SSD_SetValue(SSD_SECONED,SSD_Mid);
+[e ( _SSD_SetValue (2 , . `E863 1 . `E872 1 ]
+"72
+[; ;Display.c: 72:                 SSD_SetValue(SSD_THIRD,SSD_High);
+[e ( _SSD_SetValue (2 , . `E863 2 . `E872 2 ]
+"73
+[; ;Display.c: 73:                 break;
+[e $U 98  ]
+"74
+[; ;Display.c: 74:             }
+}
+"76
+[; ;Display.c: 76:             default:
+[e :U 103 ]
+"77
+[; ;Display.c: 77:                 break;
+[e $U 98  ]
+"79
+[; ;Display.c: 79:         }
+}
+[e $U 98  ]
+[e :U 99 ]
+[e [\ -> ( _VC_GetSpeed ..  `ui , $ -> . `E850 0 `ui 100
+ , $ -> . `E850 1 `ui 101
+ , $ -> . `E850 2 `ui 102
+ 103 ]
+[e :U 98 ]
+"81
+[; ;Display.c: 81: }
+[e :UE 96 ]
 }

@@ -1,19 +1,19 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "27 SW.c
 [; ;SW.c: 27: static tSW_Info SWs_Info[(3)];
-[c E857 0 1 2 3 .. ]
-[n E857 . SW_RELEASED SW_PRE_PRESSED SW_PRESSED SW_PRE_RELEASED  ]
+[c E859 0 1 2 3 .. ]
+[n E859 . SW_RELEASED SW_PRE_PRESSED SW_PRESSED SW_PRE_RELEASED  ]
 "21
 [; ;SW.c: 21: {
-[s S95 `uc -> 2 `i `E857 1 ]
+[s S95 `uc -> 2 `i `E859 1 ]
 [n S95 . sw_samples sw_state ]
 "1375 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1375: extern volatile unsigned char TRISB __attribute__((address(0x086)));
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
 "40 SW.c
 [; ;SW.c: 40:     for (index = SW_PLUS; index < (3); index++)
-[c E852 0 1 2 .. ]
-[n E852 . SW_PLUS SW_MINUS SW_PRE  ]
+[c E854 0 1 2 .. ]
+[n E854 . SW_PLUS SW_MINUS SW_PRE  ]
 "216 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 216: extern volatile unsigned char PORTB __attribute__((address(0x006)));
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
@@ -224,7 +224,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40
 [; ;SW.c: 40:     for (index = SW_PLUS; index < (3); index++)
 {
-[e = _index -> . `E852 0 `uc ]
+[e = _index -> . `E854 0 `uc ]
 [e $ < -> _index `i -> 3 `i 97  ]
 [e $U 98  ]
 [e :U 97 ]
@@ -239,7 +239,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux -> -> 1 `i `uc ]
 "47
 [; ;SW.c: 47:         SWs_Info[index].sw_state = SW_RELEASED;
-[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E857 0 ]
+[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E859 0 ]
 "49
 [; ;SW.c: 49:     }
 }
@@ -253,14 +253,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 "54
 [; ;SW.c: 54: tSW_State SW_GetState(tSW sw)
-[v _SW_GetState `(E857 ~T0 @X0 1 ef1`E852 ]
+[v _SW_GetState `(E859 ~T0 @X0 1 ef1`E854 ]
 "55
 [; ;SW.c: 55: {
 {
 [e :U _SW_GetState ]
 "54
 [; ;SW.c: 54: tSW_State SW_GetState(tSW sw)
-[v _sw `E852 ~T0 @X0 1 r1 ]
+[v _sw `E854 ~T0 @X0 1 r1 ]
 "55
 [; ;SW.c: 55: {
 [f ]
@@ -282,8 +282,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "65
 [; ;SW.c: 65:     static tWord SW_counter = 0;
-[v F877 `ui ~T0 @X0 1 s SW_counter ]
-[i F877
+[v F884 `ui ~T0 @X0 1 s SW_counter ]
+[i F884
 -> -> 0 `i `ui
 ]
 "66
@@ -291,11 +291,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _index `uc ~T0 @X0 1 a ]
 [e = _index -> -> 0 `i `uc ]
 "69
-[; ;SW.c: 69:     SW_counter += (5);
-[e =+ F877 -> -> 5 `i `ui ]
+[; ;SW.c: 69:     SW_counter += (10);
+[e =+ F884 -> -> 10 `i `ui ]
 "71
 [; ;SW.c: 71:     if (SW_counter != (20)){
-[e $ ! != F877 -> -> 20 `i `ui 102  ]
+[e $ ! != F884 -> -> 20 `i `ui 102  ]
 {
 "72
 [; ;SW.c: 72:         return;
@@ -306,11 +306,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 102 ]
 "75
 [; ;SW.c: 75:     SW_counter = 0;
-[e = F877 -> -> 0 `i `ui ]
+[e = F884 -> -> 0 `i `ui ]
 "78
 [; ;SW.c: 78:     for (index = SW_PLUS; index < (3); index++)
 {
-[e = _index -> . `E852 0 `uc ]
+[e = _index -> . `E854 0 `uc ]
 [e $ < -> _index `i -> 3 `i 103  ]
 [e $U 104  ]
 [e :U 103 ]
@@ -322,7 +322,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux *U + &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 0 `ui `ux ]
 "84
 [; ;SW.c: 84:         if (index == SW_PLUS)
-[e $ ! == -> _index `i -> . `E852 0 `i 106  ]
+[e $ ! == -> _index `i -> . `E854 0 `i 106  ]
 "85
 [; ;SW.c: 85:         {
 {
@@ -334,7 +334,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 107  ]
 [e :U 106 ]
-[e $ ! == -> _index `i -> . `E852 1 `i 108  ]
+[e $ ! == -> _index `i -> . `E854 1 `i 108  ]
 "88
 [; ;SW.c: 88:         {
 {
@@ -346,7 +346,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 109  ]
 [e :U 108 ]
-[e $ ! == -> _index `i -> . `E852 2 `i 110  ]
+[e $ ! == -> _index `i -> . `E854 2 `i 110  ]
 "91
 [; ;SW.c: 91:         {
 {
@@ -384,7 +384,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "109
 [; ;SW.c: 109:                     SWs_Info[index].sw_state = SW_PRE_PRESSED;
-[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E857 1 ]
+[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E859 1 ]
 "110
 [; ;SW.c: 110:                 } else
 }
@@ -411,7 +411,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "119
 [; ;SW.c: 119:                     SWs_Info[index].sw_state = SW_PRESSED;
-[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E857 2 ]
+[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E859 2 ]
 "120
 [; ;SW.c: 120:                 } else
 }
@@ -438,7 +438,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "130
 [; ;SW.c: 130:                     SWs_Info[index].sw_state = SW_PRE_RELEASED;
-[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E857 3 ]
+[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E859 3 ]
 "131
 [; ;SW.c: 131:                 }
 }
@@ -467,7 +467,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "141
 [; ;SW.c: 141:                     SWs_Info[index].sw_state = SW_RELEASED;
-[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E857 0 ]
+[e = . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 . `E859 0 ]
 "142
 [; ;SW.c: 142:                 } else
 }
@@ -494,10 +494,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 112  ]
 [e :U 113 ]
-[e [\ -> . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 `ui , $ -> . `E857 0 `ui 114
- , $ -> . `E857 1 `ui 117
- , $ -> . `E857 2 `ui 120
- , $ -> . `E857 3 `ui 123
+[e [\ -> . *U + &U _SWs_Info * -> _index `ux -> -> # *U &U _SWs_Info `ui `ux 1 `ui , $ -> . `E859 0 `ui 114
+ , $ -> . `E859 1 `ui 117
+ , $ -> . `E859 2 `ui 120
+ , $ -> . `E859 3 `ui 123
  126 ]
 [e :U 112 ]
 "152

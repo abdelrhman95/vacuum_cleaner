@@ -53,5 +53,22 @@
 #define SSD_THIRD_PIN    (GPIO_PIN_5)
 
 
+/*Motor pins*/
+#define Motor_DR (GPIO_PORTC_DATA)
+#define Motor_CR (GPIO_PORTC_CONTROL)
+#define Motor_PIN (GPIO_PIN_3)
+
+
+
+//LED FOR PRESSURE ALARM  
+#define  LED_PRESSURE_ALARM_DR (GPIO_PORTB_DATA)
+#define  LED_PRESSURE_ALARM_CR  (GPIO_PORTB_CONTROL)
+#define  LED_PRESSURE_ALARM_PIN  (GPIO_PIN_3)
+
+
+
+
+
+
 
 #endif // __PORT_H__

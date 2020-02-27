@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "VC.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,12 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
+# 1 "VC.c" 2
+
+
+
+
+
 
 
 
@@ -1723,19 +1728,26 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 4 "main.c" 2
+# 9 "VC.c" 2
+
+# 1 "./VC.h" 1
+# 23 "./VC.h"
+typedef enum{
+
+    Min_speed = 140,
+    Mid_speed = 90,
+    Max_speed = 10
+
+}tVC_Motor_speed;
 
 
-# 1 "./Main.h" 1
-# 145 "./Main.h"
-typedef unsigned int tWord;
-typedef unsigned char tByte;
-typedef unsigned int uint16;
-typedef unsigned char uint8;
-# 6 "main.c" 2
 
-# 1 "./Port.h" 1
-# 7 "main.c" 2
+
+
+void VC_Init(tVC_Motor_speed speed);
+void VC_update(void);
+tVC_Motor_speed VC_GetSpeed(void);
+# 10 "VC.c" 2
 
 # 1 "./SW.h" 1
 # 18 "./SW.h"
@@ -1758,87 +1770,15 @@ typedef enum
 void SW_Init(void);
 tSW_State SW_GetState(tSW sw);
 void SW_Update(void);
-# 8 "main.c" 2
+# 11 "VC.c" 2
 
-# 1 "./SSD.h" 1
-# 21 "./SSD.h"
-typedef enum
-{
-    SSD_FIRST,
-    SSD_SECONED,
-    SSD_THIRD
-}tSSD;
-
-
-typedef enum
-{
-    SSD_OFF = 0,
-    SSD_ON = 1
-}tSSD_State;
-
-
-typedef enum
-{
-    SSD_Low = 0,
-    SSD_Mid,
-    SSD_High,
-    SSD_NULL
-}tSSD_Symbol;
-
-void SSD_Init(tSSD ssd,tSSD_Symbol symbol);
-void SSD_Update(void);
-
-void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol);
-
-tSSD_Symbol SSD_GetValue(tSSD ssd);
-tSSD_State SSD_GetState(tSSD ssd);
-void SSD_SetState(tSSD ssd, tSSD_State state);
-
-void SSD_SetDotState(tByte state);
-# 9 "main.c" 2
-
-# 1 "./VC.h" 1
-# 23 "./VC.h"
-typedef enum{
-
-    Min_speed = 140,
-    Mid_speed = 90,
-    Max_speed = 10
-
-}tVC_Motor_speed;
-
-
-
-
-
-void VC_Init(tVC_Motor_speed speed);
-void VC_update(void);
-tVC_Motor_speed VC_GetSpeed(void);
-# 10 "main.c" 2
-
-# 1 "./Display.h" 1
-# 19 "./Display.h"
-void DISP_Init(void);
-void DISP_Update(void);
-# 11 "main.c" 2
-
-# 1 "./TIMER_1.h" 1
-# 27 "./TIMER_1.h"
-void TMR1_Init(void);
-void TMR1_Start(uint16 Degree);
-void TMR1_Stop(void);
-uint8 TMR1_CheckOverflow(void);
-void TMR1_ISR(void);
-# 12 "main.c" 2
-
-# 1 "./Timer.h" 1
-# 18 "./Timer.h"
-void TMR0_Init(void);
-void TMR0_Start(void);
-tByte TMR0_CheckOverFlow(void);
-void TMR0_Stop(void);
-void TMR0_ISR(void);
-# 13 "main.c" 2
+# 1 "./Main.h" 1
+# 145 "./Main.h"
+typedef unsigned int tWord;
+typedef unsigned char tByte;
+typedef unsigned int uint16;
+typedef unsigned char uint8;
+# 12 "VC.c" 2
 
 # 1 "./Motor.h" 1
 # 19 "./Motor.h"
@@ -1854,81 +1794,204 @@ void MOT_Update(void);
 void MOT_SetTargetAngle(tVC_Motor_speed M);
 uint8 Get_actual(void);
 void Firing_Pulse(void);
-# 14 "main.c" 2
+# 13 "VC.c" 2
+
+# 1 "./Timer.h" 1
+# 18 "./Timer.h"
+void TMR0_Init(void);
+void TMR0_Start(void);
+tByte TMR0_CheckOverFlow(void);
+void TMR0_Stop(void);
+void TMR0_ISR(void);
+# 14 "VC.c" 2
+
+# 1 "./Port.h" 1
+# 15 "VC.c" 2
+# 25 "VC.c"
+static tVC_Motor_speed Motor_speed ;
+
+
+static void handling_switch_events(void);
+
+
+static uint16 PRESSURE_COUNTER ;
 
 
 
-
-
-
-
-
-#pragma config FOSC = XT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config BOREN = OFF
-#pragma config LVP = OFF
-#pragma config CPD = OFF
-#pragma config WRT = OFF
-#pragma config CP = OFF
-
-
-
-
-volatile uint8 ISR_FLAG;
-
-
-int main(void) {
-
-
-
-
-    ISR_FLAG = 0;
-    VC_Init(Mid_speed);
-    TMR0_Init();
-    TMR0_Start();
-    TMR1_Init();
-    DISP_Init();
-    SW_Init();
-
-
-    (((TRISC)) = ((TRISC) & (~(1 << (4))))|((0) << (4)));
-    (((PORTC)) = ((PORTC) & (~(1 << (4))))|(0 << (4)));
-
-
-    while(1)
-    {
-        if(ISR_FLAG)
-        {
-
-            (((PORTC)) = (((PORTC)) ^(1 << (4))));
-
-            SSD_Update();
-            SW_Update();
-            DISP_Update();
-            VC_update();
-            MOT_Update();
-            ISR_FLAG = 0;
-        }
-    }
-# 80 "main.c"
-}
-
-void __attribute__((picinterrupt(("")))) Generic_ISR()
+void VC_Init(tVC_Motor_speed speed)
 {
 
 
-    if(TMR1_CheckOverflow())
-    {
-        TMR1_ISR();
-    }
+    Motor_speed = speed;
 
 
+    MOT_Init(speed);
 
 
-    if(TMR0_CheckOverFlow())
-    {
-        TMR0_ISR();
-    }
+    ((((PORTB))) = (((PORTB)) & (~(1 << (3))))|((0) << (3)));
+    ((((TRISB))) = (((TRISB)) & (~(1 << (3))))|(0 << (3)));
+
+    PRESSURE_COUNTER = 0;
 
 }
+
+
+
+
+
+
+void VC_update(void)
+{
+
+
+     static uint8 VC_counter = 10;
+
+
+     VC_counter += (10);
+
+
+     if(VC_counter != (20))
+     {
+         return;
+     }
+
+     VC_counter = 0;
+# 83 "VC.c"
+   handling_switch_events();
+
+
+   MOT_SetTargetAngle(Motor_speed);
+}
+
+
+
+
+tVC_Motor_speed VC_GetSpeed(void)
+{
+
+    return Motor_speed;
+
+}
+
+
+ static void handling_switch_events(void)
+{
+
+
+    if(SW_GetState(SW_PLUS) == SW_PRE_PRESSED)
+    {
+        switch(Motor_speed)
+        {
+            case Min_speed:
+            {
+                Motor_speed = Mid_speed;
+                break;
+            }
+
+            case Mid_speed:
+            {
+                Motor_speed = Max_speed;
+                break;
+            }
+
+            case Max_speed:
+            {
+
+                break;
+            }
+
+
+            default:
+                break;
+
+
+        }
+
+
+    }
+
+    if(SW_GetState(SW_MINUS) == (SW_PRE_PRESSED))
+    {
+
+        switch (Motor_speed)
+        {
+            case Min_speed:
+            {
+
+                break;
+            }
+
+            case Mid_speed:
+            {
+                Motor_speed = Min_speed;
+                break;
+            }
+
+            case Max_speed:
+            {
+                Motor_speed = Mid_speed;
+                break;
+            }
+
+
+            default:
+                break;
+
+
+        }
+
+    }
+
+     if(SW_GetState(SW_PRE) == (SW_PRESSED))
+       {
+
+
+
+                PRESSURE_COUNTER += (20);
+
+
+             if(PRESSURE_COUNTER != (30000))
+             {
+                 return;
+             }
+
+              PRESSURE_COUNTER = 0;
+
+
+             switch(Motor_speed)
+             {
+                 case Min_speed:
+                 {
+
+                     break;
+                 }
+
+                 case Mid_speed:
+                 {
+                     Motor_speed = Min_speed;
+                     break;
+                 }
+
+                 case Max_speed:
+                 {
+                     Motor_speed = Mid_speed;
+                     break;
+                 }
+
+
+                 default:
+                     break;
+             }
+
+
+
+       }
+
+     else
+     {
+           PRESSURE_COUNTER = 0;
+
+           ((((TRISB))) = (((TRISB)) & (~(1 << (3))))|(0 << (3)));
+     }
+
+ }

@@ -4,11 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/F:/Embedded%20systems/vacuum_cleaner/Port.h</file>
-            <file>file:/F:/Embedded%20systems/vacuum_cleaner/SSD.c</file>
-            <file>file:/F:/Embedded%20systems/vacuum_cleaner/SSD.h</file>
-            <file>file:/F:/Embedded%20systems/vacuum_cleaner/SW.c</file>
+            <file>file:/F:/Embedded%20systems/vacuum_cleaner/Motor.c</file>
             <file>file:/F:/Embedded%20systems/vacuum_cleaner/main.c</file>
-            <file>file:/F:/Embedded%20systems/vacuum_cleaner/SW.h</file>
         </group>
     </open-files>
 </project-private>

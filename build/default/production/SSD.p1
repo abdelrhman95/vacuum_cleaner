@@ -1,28 +1,28 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"23 SSD.c
-[; ;SSD.c: 23: static tSSD SSD_current = SSD_FIRST;
-[c E852 0 1 2 .. ]
-[n E852 . SSD_FIRST SSD_SECONED SSD_THIRD  ]
-"27
-[; ;SSD.c: 27: static tSSD_Symbol SSD_Values[(3)] = {SSD_NULL};
-[c E861 0 1 2 3 .. ]
-[n E861 . SSD_Low SSD_Mid SSD_High SSD_NULL  ]
-"29
-[; ;SSD.c: 29: static tByte SSD_DotState = SSD_OFF;
-[c E857 0 1 .. ]
-[n E857 . SSD_OFF SSD_ON  ]
+"31 SSD.c
+[; ;SSD.c: 31: static tSSD SSD_current = SSD_FIRST;
+[c E854 0 1 2 .. ]
+[n E854 . SSD_FIRST SSD_SECONED SSD_THIRD  ]
+"35
+[; ;SSD.c: 35: static tSSD_Symbol SSD_Values[(3)] = {SSD_NULL};
+[c E863 0 1 2 3 .. ]
+[n E863 . SSD_Low SSD_Mid SSD_High SSD_NULL  ]
+"37
+[; ;SSD.c: 37: static tByte SSD_DotState = SSD_OFF;
+[c E859 0 1 .. ]
+[n E859 . SSD_OFF SSD_ON  ]
 "1499 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1499: extern volatile unsigned char TRISD __attribute__((address(0x088)));
 [v _TRISD `Vuc ~T0 @X0 0 e@136 ]
-"31 SSD.c
-[; ;SSD.c: 31: static void SSD_Out(tSSD ssd, tSSD_Symbol ssd_symbol);
-[v _SSD_Out `(v ~T0 @X0 0 sf2`E852`E861 ]
+"39 SSD.c
+[; ;SSD.c: 39: static void SSD_Out(tSSD ssd, tSSD_Symbol ssd_symbol);
+[v _SSD_Out `(v ~T0 @X0 0 sf2`E854`E863 ]
 "1375 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1375: extern volatile unsigned char TRISB __attribute__((address(0x086)));
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
-"43 ./SSD.h
-[; ;./SSD.h: 43: void SSD_SetState(tSSD ssd, tSSD_State state);
-[v _SSD_SetState `(v ~T0 @X0 0 ef2`E852`E857 ]
+"51 ./SSD.h
+[; ;./SSD.h: 51: void SSD_SetState(tSSD ssd, tSSD_State state);
+[v _SSD_SetState `(v ~T0 @X0 0 ef2`E854`E859 ]
 "216 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 216: extern volatile unsigned char PORTB __attribute__((address(0x006)));
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
@@ -209,8 +209,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"14 SSD.c
-[; ;SSD.c: 14: static tByte SSD_Data[(4)] =
+"22 SSD.c
+[; ;SSD.c: 22: static tByte SSD_Data[(4)] =
 [v _SSD_Data `uc ~T0 @X0 -> 4 `i s ]
 [i _SSD_Data
 :U ..
@@ -220,375 +220,365 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-"23
-[; ;SSD.c: 23: static tSSD SSD_current = SSD_FIRST;
-[v _SSD_current `E852 ~T0 @X0 1 s ]
+"31
+[; ;SSD.c: 31: static tSSD SSD_current = SSD_FIRST;
+[v _SSD_current `E854 ~T0 @X0 1 s ]
 [i _SSD_current
-. `E852 0
+. `E854 0
 ]
-"27
-[; ;SSD.c: 27: static tSSD_Symbol SSD_Values[(3)] = {SSD_NULL};
-[v _SSD_Values `E861 ~T0 @X0 -> 3 `i s ]
+"35
+[; ;SSD.c: 35: static tSSD_Symbol SSD_Values[(3)] = {SSD_NULL};
+[v _SSD_Values `E863 ~T0 @X0 -> 3 `i s ]
 [i _SSD_Values
 :U ..
-. `E861 3
+. `E863 3
 ..
 ]
-"29
-[; ;SSD.c: 29: static tByte SSD_DotState = SSD_OFF;
+"37
+[; ;SSD.c: 37: static tByte SSD_DotState = SSD_OFF;
 [v _SSD_DotState `uc ~T0 @X0 1 s ]
 [i _SSD_DotState
--> . `E857 0 `uc
+-> . `E859 0 `uc
 ]
-"33
-[; ;SSD.c: 33: void SSD_Init(tSSD ssd)
-[v _SSD_Init `(v ~T0 @X0 1 ef1`E852 ]
-"34
-[; ;SSD.c: 34: {
+"41
+[; ;SSD.c: 41: void SSD_Init(tSSD ssd,tSSD_Symbol symbol)
+[v _SSD_Init `(v ~T0 @X0 1 ef2`E854`E863 ]
+"42
+[; ;SSD.c: 42: {
 {
 [e :U _SSD_Init ]
-"33
-[; ;SSD.c: 33: void SSD_Init(tSSD ssd)
-[v _ssd `E852 ~T0 @X0 1 r1 ]
-"34
-[; ;SSD.c: 34: {
-[f ]
-"37
-[; ;SSD.c: 37:     ((((TRISD))) = (((0))? (~0):(0)));
-[e = _TRISD -> ? != -> 0 `i -> 0 `i : ~ -> 0 `i -> 0 `i `uc ]
-"38
-[; ;SSD.c: 38:     SSD_Out(ssd, SSD_NULL);
-[e ( _SSD_Out (2 , _ssd . `E861 3 ]
 "41
-[; ;SSD.c: 41:     switch (ssd)
-[e $U 97  ]
+[; ;SSD.c: 41: void SSD_Init(tSSD ssd,tSSD_Symbol symbol)
+[v _ssd `E854 ~T0 @X0 1 r1 ]
+[v _symbol `E863 ~T0 @X0 1 r2 ]
 "42
-[; ;SSD.c: 42:     {
-{
-"43
-[; ;SSD.c: 43:         case SSD_FIRST:
-[e :U 98 ]
-"44
-[; ;SSD.c: 44:             ((((TRISB))) = (((TRISB)) & (~(1 << ((7)))))|((0) << ((7))));
-[e = _TRISB -> | & -> _TRISB `i ~ << -> 1 `i -> 7 `i << -> 0 `i -> 7 `i `uc ]
+[; ;SSD.c: 42: {
+[f ]
 "45
-[; ;SSD.c: 45:             break;
-[e $U 96  ]
+[; ;SSD.c: 45:     ((((TRISD))) = (((0))? (~0):(0)));
+[e = _TRISD -> ? != -> 0 `i -> 0 `i : ~ -> 0 `i -> 0 `i `uc ]
 "46
-[; ;SSD.c: 46:         case SSD_SECONED:
-[e :U 99 ]
-"47
-[; ;SSD.c: 47:             ((((TRISB))) = (((TRISB)) & (~(1 << ((6)))))|((0) << ((6))));
-[e = _TRISB -> | & -> _TRISB `i ~ << -> 1 `i -> 6 `i << -> 0 `i -> 6 `i `uc ]
-"48
-[; ;SSD.c: 48:             break;
-[e $U 96  ]
+[; ;SSD.c: 46:     SSD_Out(ssd, SSD_NULL);
+[e ( _SSD_Out (2 , _ssd . `E863 3 ]
 "49
-[; ;SSD.c: 49:         case SSD_THIRD:
-[e :U 100 ]
+[; ;SSD.c: 49:     switch (ssd)
+[e $U 97  ]
 "50
-[; ;SSD.c: 50:             ((((TRISB))) = (((TRISB)) & (~(1 << ((5)))))|((0) << ((5))));
-[e = _TRISB -> | & -> _TRISB `i ~ << -> 1 `i -> 5 `i << -> 0 `i -> 5 `i `uc ]
+[; ;SSD.c: 50:     {
+{
 "51
-[; ;SSD.c: 51:             break;
-[e $U 96  ]
+[; ;SSD.c: 51:         case SSD_FIRST:
+[e :U 98 ]
+"52
+[; ;SSD.c: 52:             ((((TRISB))) = (((TRISB)) & (~(1 << ((7)))))|((0) << ((7))));
+[e = _TRISB -> | & -> _TRISB `i ~ << -> 1 `i -> 7 `i << -> 0 `i -> 7 `i `uc ]
 "53
-[; ;SSD.c: 53:         default:
-[e :U 101 ]
+[; ;SSD.c: 53:             SSD_Values[SSD_FIRST] = SSD_Low;
+[e = *U + &U _SSD_Values * -> . `E854 0 `ux -> -> # *U &U _SSD_Values `ui `ux . `E863 0 ]
 "54
 [; ;SSD.c: 54:             break;
 [e $U 96  ]
 "55
-[; ;SSD.c: 55:     }
+[; ;SSD.c: 55:         case SSD_SECONED:
+[e :U 99 ]
+"56
+[; ;SSD.c: 56:             ((((TRISB))) = (((TRISB)) & (~(1 << ((6)))))|((0) << ((6))));
+[e = _TRISB -> | & -> _TRISB `i ~ << -> 1 `i -> 6 `i << -> 0 `i -> 6 `i `uc ]
+"57
+[; ;SSD.c: 57:             SSD_Values[SSD_SECONED] = SSD_Mid;
+[e = *U + &U _SSD_Values * -> . `E854 1 `ux -> -> # *U &U _SSD_Values `ui `ux . `E863 1 ]
+"58
+[; ;SSD.c: 58:             break;
+[e $U 96  ]
+"59
+[; ;SSD.c: 59:         case SSD_THIRD:
+[e :U 100 ]
+"60
+[; ;SSD.c: 60:             ((((TRISB))) = (((TRISB)) & (~(1 << ((5)))))|((0) << ((5))));
+[e = _TRISB -> | & -> _TRISB `i ~ << -> 1 `i -> 5 `i << -> 0 `i -> 5 `i `uc ]
+"61
+[; ;SSD.c: 61:             SSD_Values[SSD_THIRD] = SSD_High;
+[e = *U + &U _SSD_Values * -> . `E854 2 `ux -> -> # *U &U _SSD_Values `ui `ux . `E863 2 ]
+"62
+[; ;SSD.c: 62:             break;
+[e $U 96  ]
+"64
+[; ;SSD.c: 64:         default:
+[e :U 101 ]
+"65
+[; ;SSD.c: 65:             break;
+[e $U 96  ]
+"66
+[; ;SSD.c: 66:     }
 }
 [e $U 96  ]
 [e :U 97 ]
-[e [\ -> _ssd `ui , $ -> . `E852 0 `ui 98
- , $ -> . `E852 1 `ui 99
- , $ -> . `E852 2 `ui 100
+[e [\ -> _ssd `ui , $ -> . `E854 0 `ui 98
+ , $ -> . `E854 1 `ui 99
+ , $ -> . `E854 2 `ui 100
  101 ]
 [e :U 96 ]
-"56
-[; ;SSD.c: 56:     SSD_SetState(ssd, SSD_OFF);
-[e ( _SSD_SetState (2 , _ssd . `E857 0 ]
-"58
-[; ;SSD.c: 58: }
+"67
+[; ;SSD.c: 67:     SSD_SetState(ssd, SSD_OFF);
+[e ( _SSD_SetState (2 , _ssd . `E859 0 ]
+"69
+[; ;SSD.c: 69: }
 [e :UE 95 ]
 }
-"60
-[; ;SSD.c: 60: void SSD_Update(void)
+"71
+[; ;SSD.c: 71: void SSD_Update(void)
 [v _SSD_Update `(v ~T0 @X0 1 ef ]
-"61
-[; ;SSD.c: 61: {
+"72
+[; ;SSD.c: 72: {
 {
 [e :U _SSD_Update ]
 [f ]
-"62
-[; ;SSD.c: 62:     static tWord SSD_counter = 0;
-[v F892 `ui ~T0 @X0 1 s SSD_counter ]
-[i F892
+"73
+[; ;SSD.c: 73:     static tWord SSD_counter = 0;
+[v F901 `ui ~T0 @X0 1 s SSD_counter ]
+[i F901
 -> -> 0 `i `ui
 ]
-"66
-[; ;SSD.c: 66:     SSD_counter += (5);
-[e =+ F892 -> -> 5 `i `ui ]
-"68
-[; ;SSD.c: 68:     if (SSD_counter != (5)){
-[e $ ! != F892 -> -> 5 `i `ui 103  ]
-{
-"69
-[; ;SSD.c: 69:         return;
-[e $UE 102  ]
-"70
-[; ;SSD.c: 70:     }
-}
-[e :U 103 ]
-"72
-[; ;SSD.c: 72:     SSD_counter = 0;
-[e = F892 -> -> 0 `i `ui ]
-"76
-[; ;SSD.c: 76:     SSD_Out(SSD_current, SSD_Values[SSD_current]);
-[e ( _SSD_Out (2 , _SSD_current *U + &U _SSD_Values * -> _SSD_current `ux -> -> # *U &U _SSD_Values `ui `ux ]
-"78
-[; ;SSD.c: 78:     if (SSD_current == SSD_THIRD)
-[e $ ! == -> _SSD_current `ui -> . `E852 2 `ui 104  ]
+"77
+[; ;SSD.c: 77:     SSD_counter += (10);
+[e =+ F901 -> -> 10 `i `ui ]
 "79
-[; ;SSD.c: 79:     {
+[; ;SSD.c: 79:     if (SSD_counter != (10)){
+[e $ ! != F901 -> -> 10 `i `ui 103  ]
 {
 "80
-[; ;SSD.c: 80:         SSD_current = SSD_FIRST;
-[e = _SSD_current . `E852 0 ]
+[; ;SSD.c: 80:         return;
+[e $UE 102  ]
 "81
-[; ;SSD.c: 81:     } else
+[; ;SSD.c: 81:     }
+}
+[e :U 103 ]
+"83
+[; ;SSD.c: 83:     SSD_counter = 0;
+[e = F901 -> -> 0 `i `ui ]
+"87
+[; ;SSD.c: 87:     SSD_Out(SSD_current, SSD_Values[SSD_current]);
+[e ( _SSD_Out (2 , _SSD_current *U + &U _SSD_Values * -> _SSD_current `ux -> -> # *U &U _SSD_Values `ui `ux ]
+"89
+[; ;SSD.c: 89:     if (SSD_current == SSD_THIRD)
+[e $ ! == -> _SSD_current `ui -> . `E854 2 `ui 104  ]
+"90
+[; ;SSD.c: 90:     {
+{
+"91
+[; ;SSD.c: 91:         SSD_current = SSD_FIRST;
+[e = _SSD_current . `E854 0 ]
+"92
+[; ;SSD.c: 92:     } else
 }
 [e $U 105  ]
 [e :U 104 ]
-"82
-[; ;SSD.c: 82:     {
+"93
+[; ;SSD.c: 93:     {
 {
-"83
-[; ;SSD.c: 83:         SSD_current++;
-[e ++ _SSD_current -> -> 1 `i `E852 ]
-"84
-[; ;SSD.c: 84:     }
+"94
+[; ;SSD.c: 94:         SSD_current++;
+[e ++ _SSD_current -> -> 1 `i `E854 ]
+"95
+[; ;SSD.c: 95:     }
 }
 [e :U 105 ]
-"86
-[; ;SSD.c: 86: }
+"97
+[; ;SSD.c: 97: }
 [e :UE 102 ]
 }
-"89
-[; ;SSD.c: 89: void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol)
-[v _SSD_SetValue `(v ~T0 @X0 1 ef2`E852`E861 ]
-"90
-[; ;SSD.c: 90: {
+"100
+[; ;SSD.c: 100: void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol)
+[v _SSD_SetValue `(v ~T0 @X0 1 ef2`E854`E863 ]
+"101
+[; ;SSD.c: 101: {
 {
 [e :U _SSD_SetValue ]
-"89
-[; ;SSD.c: 89: void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol)
-[v _ssd `E852 ~T0 @X0 1 r1 ]
-[v _ssd_symbol `E861 ~T0 @X0 1 r2 ]
-"90
-[; ;SSD.c: 90: {
+"100
+[; ;SSD.c: 100: void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol)
+[v _ssd `E854 ~T0 @X0 1 r1 ]
+[v _ssd_symbol `E863 ~T0 @X0 1 r2 ]
+"101
+[; ;SSD.c: 101: {
 [f ]
-"92
-[; ;SSD.c: 92:     SSD_Values[ssd] = ssd_symbol;
+"103
+[; ;SSD.c: 103:     SSD_Values[ssd] = ssd_symbol;
 [e = *U + &U _SSD_Values * -> _ssd `ux -> -> # *U &U _SSD_Values `ui `ux _ssd_symbol ]
-"94
-[; ;SSD.c: 94: }
+"105
+[; ;SSD.c: 105: }
 [e :UE 106 ]
 }
-"96
-[; ;SSD.c: 96: tSSD_State SSD_GetState(tSSD ssd)
-[v _SSD_GetState `(E857 ~T0 @X0 1 ef1`E852 ]
-"97
-[; ;SSD.c: 97: {
+"107
+[; ;SSD.c: 107: tSSD_State SSD_GetState(tSSD ssd)
+[v _SSD_GetState `(E859 ~T0 @X0 1 ef1`E854 ]
+"108
+[; ;SSD.c: 108: {
 {
 [e :U _SSD_GetState ]
-"96
-[; ;SSD.c: 96: tSSD_State SSD_GetState(tSSD ssd)
-[v _ssd `E852 ~T0 @X0 1 r1 ]
-"97
-[; ;SSD.c: 97: {
-[f ]
-"98
-[; ;SSD.c: 98:     tSSD_State ret = SSD_OFF;
-[v _ret `E857 ~T0 @X0 1 a ]
-[e = _ret . `E857 0 ]
-"100
-[; ;SSD.c: 100:     switch (ssd)
-[e $U 109  ]
-"101
-[; ;SSD.c: 101:     {
-{
-"102
-[; ;SSD.c: 102:         case SSD_FIRST:
-[e :U 110 ]
-"103
-[; ;SSD.c: 103:             ret = (((((PORTB))) & (1 << ((7)))) >> (((7))));
-[e = _ret -> >> & -> _PORTB `i << -> 1 `i -> 7 `i -> 7 `i `E857 ]
-"104
-[; ;SSD.c: 104:             break;
-[e $U 108  ]
-"105
-[; ;SSD.c: 105:         case SSD_SECONED:
-[e :U 111 ]
-"106
-[; ;SSD.c: 106:             ret = (((((PORTB))) & (1 << ((6)))) >> (((6))));
-[e = _ret -> >> & -> _PORTB `i << -> 1 `i -> 6 `i -> 6 `i `E857 ]
 "107
-[; ;SSD.c: 107:             break;
-[e $U 108  ]
+[; ;SSD.c: 107: tSSD_State SSD_GetState(tSSD ssd)
+[v _ssd `E854 ~T0 @X0 1 r1 ]
 "108
-[; ;SSD.c: 108:         case SSD_THIRD:
-[e :U 112 ]
+[; ;SSD.c: 108: {
+[f ]
 "109
-[; ;SSD.c: 109:             ret = (((((PORTB))) & (1 << ((5)))) >> (((5))));
-[e = _ret -> >> & -> _PORTB `i << -> 1 `i -> 5 `i -> 5 `i `E857 ]
-"110
-[; ;SSD.c: 110:             break;
-[e $U 108  ]
+[; ;SSD.c: 109:     tSSD_State ret = SSD_OFF;
+[v _ret `E859 ~T0 @X0 1 a ]
+[e = _ret . `E859 0 ]
+"111
+[; ;SSD.c: 111:     switch (ssd)
+[e $U 109  ]
 "112
-[; ;SSD.c: 112:         default:
-[e :U 113 ]
+[; ;SSD.c: 112:     {
+{
 "113
-[; ;SSD.c: 113:             break;
-[e $U 108  ]
+[; ;SSD.c: 113:         case SSD_FIRST:
+[e :U 110 ]
 "114
-[; ;SSD.c: 114:     }
+[; ;SSD.c: 114:             ret = (((((PORTB))) & (1 << ((7)))) >> (((7))));
+[e = _ret -> >> & -> _PORTB `i << -> 1 `i -> 7 `i -> 7 `i `E859 ]
+"115
+[; ;SSD.c: 115:             break;
+[e $U 108  ]
+"116
+[; ;SSD.c: 116:         case SSD_SECONED:
+[e :U 111 ]
+"117
+[; ;SSD.c: 117:             ret = (((((PORTB))) & (1 << ((6)))) >> (((6))));
+[e = _ret -> >> & -> _PORTB `i << -> 1 `i -> 6 `i -> 6 `i `E859 ]
+"118
+[; ;SSD.c: 118:             break;
+[e $U 108  ]
+"119
+[; ;SSD.c: 119:         case SSD_THIRD:
+[e :U 112 ]
+"120
+[; ;SSD.c: 120:             ret = (((((PORTB))) & (1 << ((5)))) >> (((5))));
+[e = _ret -> >> & -> _PORTB `i << -> 1 `i -> 5 `i -> 5 `i `E859 ]
+"121
+[; ;SSD.c: 121:             break;
+[e $U 108  ]
+"123
+[; ;SSD.c: 123:         default:
+[e :U 113 ]
+"124
+[; ;SSD.c: 124:             break;
+[e $U 108  ]
+"125
+[; ;SSD.c: 125:     }
 }
 [e $U 108  ]
 [e :U 109 ]
-[e [\ -> _ssd `ui , $ -> . `E852 0 `ui 110
- , $ -> . `E852 1 `ui 111
- , $ -> . `E852 2 `ui 112
+[e [\ -> _ssd `ui , $ -> . `E854 0 `ui 110
+ , $ -> . `E854 1 `ui 111
+ , $ -> . `E854 2 `ui 112
  113 ]
 [e :U 108 ]
-"116
-[; ;SSD.c: 116:      return ret;
+"127
+[; ;SSD.c: 127:      return ret;
 [e ) _ret ]
 [e $UE 107  ]
-"118
-[; ;SSD.c: 118: }
+"129
+[; ;SSD.c: 129: }
 [e :UE 107 ]
 }
-"120
-[; ;SSD.c: 120: void SSD_SetState(tSSD ssd, tSSD_State state)
-[v _SSD_SetState `(v ~T0 @X0 1 ef2`E852`E857 ]
-"121
-[; ;SSD.c: 121: {
+"131
+[; ;SSD.c: 131: void SSD_SetState(tSSD ssd, tSSD_State state)
+[v _SSD_SetState `(v ~T0 @X0 1 ef2`E854`E859 ]
+"132
+[; ;SSD.c: 132: {
 {
 [e :U _SSD_SetState ]
-"120
-[; ;SSD.c: 120: void SSD_SetState(tSSD ssd, tSSD_State state)
-[v _ssd `E852 ~T0 @X0 1 r1 ]
-[v _state `E857 ~T0 @X0 1 r2 ]
-"121
-[; ;SSD.c: 121: {
-[f ]
-"123
-[; ;SSD.c: 123:     switch (ssd)
-[e $U 116  ]
-"124
-[; ;SSD.c: 124:     {
-{
-"125
-[; ;SSD.c: 125:         case SSD_FIRST:
-[e :U 117 ]
-"126
-[; ;SSD.c: 126:             ((((PORTB))) = (((PORTB)) & (~(1 << ((7)))))|(state << ((7))));
-[e = _PORTB -> | -> & -> _PORTB `i ~ << -> 1 `i -> 7 `i `ui << -> _state `ui -> 7 `i `uc ]
-"127
-[; ;SSD.c: 127:             break;
-[e $U 115  ]
-"128
-[; ;SSD.c: 128:         case SSD_SECONED:
-[e :U 118 ]
-"129
-[; ;SSD.c: 129:             ((((PORTB))) = (((PORTB)) & (~(1 << ((6)))))|(state << ((6))));
-[e = _PORTB -> | -> & -> _PORTB `i ~ << -> 1 `i -> 6 `i `ui << -> _state `ui -> 6 `i `uc ]
-"130
-[; ;SSD.c: 130:             break;
-[e $U 115  ]
 "131
-[; ;SSD.c: 131:         case SSD_THIRD:
-[e :U 119 ]
+[; ;SSD.c: 131: void SSD_SetState(tSSD ssd, tSSD_State state)
+[v _ssd `E854 ~T0 @X0 1 r1 ]
+[v _state `E859 ~T0 @X0 1 r2 ]
 "132
-[; ;SSD.c: 132:             ((((PORTB))) = (((PORTB)) & (~(1 << ((5)))))|(state << ((5))));
-[e = _PORTB -> | -> & -> _PORTB `i ~ << -> 1 `i -> 5 `i `ui << -> _state `ui -> 5 `i `uc ]
-"133
-[; ;SSD.c: 133:             break;
-[e $U 115  ]
+[; ;SSD.c: 132: {
+[f ]
+"134
+[; ;SSD.c: 134:     switch (ssd)
+[e $U 116  ]
 "135
-[; ;SSD.c: 135:         default:
-[e :U 120 ]
+[; ;SSD.c: 135:     {
+{
 "136
-[; ;SSD.c: 136:             break;
-[e $U 115  ]
+[; ;SSD.c: 136:         case SSD_FIRST:
+[e :U 117 ]
 "137
-[; ;SSD.c: 137:     }
+[; ;SSD.c: 137:             ((((PORTB))) = (((PORTB)) & (~(1 << ((7)))))|(state << ((7))));
+[e = _PORTB -> | -> & -> _PORTB `i ~ << -> 1 `i -> 7 `i `ui << -> _state `ui -> 7 `i `uc ]
+"138
+[; ;SSD.c: 138:             break;
+[e $U 115  ]
+"139
+[; ;SSD.c: 139:         case SSD_SECONED:
+[e :U 118 ]
+"140
+[; ;SSD.c: 140:             ((((PORTB))) = (((PORTB)) & (~(1 << ((6)))))|(state << ((6))));
+[e = _PORTB -> | -> & -> _PORTB `i ~ << -> 1 `i -> 6 `i `ui << -> _state `ui -> 6 `i `uc ]
+"141
+[; ;SSD.c: 141:             break;
+[e $U 115  ]
+"142
+[; ;SSD.c: 142:         case SSD_THIRD:
+[e :U 119 ]
+"143
+[; ;SSD.c: 143:             ((((PORTB))) = (((PORTB)) & (~(1 << ((5)))))|(state << ((5))));
+[e = _PORTB -> | -> & -> _PORTB `i ~ << -> 1 `i -> 5 `i `ui << -> _state `ui -> 5 `i `uc ]
+"144
+[; ;SSD.c: 144:             break;
+[e $U 115  ]
+"146
+[; ;SSD.c: 146:         default:
+[e :U 120 ]
+"147
+[; ;SSD.c: 147:             break;
+[e $U 115  ]
+"148
+[; ;SSD.c: 148:     }
 }
 [e $U 115  ]
 [e :U 116 ]
-[e [\ -> _ssd `ui , $ -> . `E852 0 `ui 117
- , $ -> . `E852 1 `ui 118
- , $ -> . `E852 2 `ui 119
+[e [\ -> _ssd `ui , $ -> . `E854 0 `ui 117
+ , $ -> . `E854 1 `ui 118
+ , $ -> . `E854 2 `ui 119
  120 ]
 [e :U 115 ]
-"139
-[; ;SSD.c: 139: }
+"150
+[; ;SSD.c: 150: }
 [e :UE 114 ]
 }
-"142
-[; ;SSD.c: 142: void SSD_SetDotState(tByte state)
-[v _SSD_SetDotState `(v ~T0 @X0 1 ef1`uc ]
-"143
-[; ;SSD.c: 143: {
-{
-[e :U _SSD_SetDotState ]
-"142
-[; ;SSD.c: 142: void SSD_SetDotState(tByte state)
-[v _state `uc ~T0 @X0 1 r1 ]
-"143
-[; ;SSD.c: 143: {
-[f ]
-"145
-[; ;SSD.c: 145:     SSD_DotState = state;
-[e = _SSD_DotState _state ]
-"147
-[; ;SSD.c: 147: }
-[e :UE 121 ]
-}
-"148
-[; ;SSD.c: 148: static void SSD_Out(tSSD ssd, tSSD_Symbol ssd_symbol)
-[v _SSD_Out `(v ~T0 @X0 1 sf2`E852`E861 ]
-"149
-[; ;SSD.c: 149: {
+"155
+[; ;SSD.c: 155: static void SSD_Out(tSSD ssd, tSSD_Symbol ssd_symbol)
+[v _SSD_Out `(v ~T0 @X0 1 sf2`E854`E863 ]
+"156
+[; ;SSD.c: 156: {
 {
 [e :U _SSD_Out ]
-"148
-[; ;SSD.c: 148: static void SSD_Out(tSSD ssd, tSSD_Symbol ssd_symbol)
-[v _ssd `E852 ~T0 @X0 1 r1 ]
-[v _ssd_symbol `E861 ~T0 @X0 1 r2 ]
-"149
-[; ;SSD.c: 149: {
-[f ]
-"152
-[; ;SSD.c: 152:     SSD_SetState(SSD_FIRST, SSD_OFF);
-[e ( _SSD_SetState (2 , . `E852 0 . `E857 0 ]
-"153
-[; ;SSD.c: 153:     SSD_SetState(SSD_SECONED, SSD_OFF);
-[e ( _SSD_SetState (2 , . `E852 1 . `E857 0 ]
-"154
-[; ;SSD.c: 154:     SSD_SetState(SSD_THIRD, SSD_OFF);
-[e ( _SSD_SetState (2 , . `E852 2 . `E857 0 ]
+"155
+[; ;SSD.c: 155: static void SSD_Out(tSSD ssd, tSSD_Symbol ssd_symbol)
+[v _ssd `E854 ~T0 @X0 1 r1 ]
+[v _ssd_symbol `E863 ~T0 @X0 1 r2 ]
 "156
-[; ;SSD.c: 156:     ((((PORTD))) = (SSD_Data[ssd_symbol]));
-[e = _PORTD *U + &U _SSD_Data * -> _ssd_symbol `ux -> -> # *U &U _SSD_Data `ui `ux ]
+[; ;SSD.c: 156: {
+[f ]
 "159
-[; ;SSD.c: 159:     SSD_SetState(ssd, SSD_ON);
-[e ( _SSD_SetState (2 , _ssd . `E857 1 ]
+[; ;SSD.c: 159:     SSD_SetState(SSD_FIRST, SSD_OFF);
+[e ( _SSD_SetState (2 , . `E854 0 . `E859 0 ]
+"160
+[; ;SSD.c: 160:     SSD_SetState(SSD_SECONED, SSD_OFF);
+[e ( _SSD_SetState (2 , . `E854 1 . `E859 0 ]
+"161
+[; ;SSD.c: 161:     SSD_SetState(SSD_THIRD, SSD_OFF);
+[e ( _SSD_SetState (2 , . `E854 2 . `E859 0 ]
 "163
-[; ;SSD.c: 163: }
-[e :UE 122 ]
+[; ;SSD.c: 163:     ((((PORTD))) = (SSD_Data[ssd_symbol]));
+[e = _PORTD *U + &U _SSD_Data * -> _ssd_symbol `ux -> -> # *U &U _SSD_Data `ui `ux ]
+"166
+[; ;SSD.c: 166:     SSD_SetState(ssd, SSD_ON);
+[e ( _SSD_SetState (2 , _ssd . `E859 1 ]
+"170
+[; ;SSD.c: 170: }
+[e :UE 121 ]
 }

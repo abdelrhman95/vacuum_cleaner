@@ -1,3 +1,11 @@
+
+/* 
+ * File:   SSD.h
+ * Author: Abdelrhman Sayed
+ * Comments: 
+ * Revision history: 14/1/2020
+ */
+
 #ifndef __SDD_H__
 #define __SDD_H__
 
@@ -33,7 +41,7 @@ typedef enum
     SSD_NULL /**when i want to blink*/
 }tSSD_Symbol;
 
-void SSD_Init(tSSD ssd);
+void SSD_Init(tSSD ssd,tSSD_Symbol symbol);
 void SSD_Update(void);
 /**set symbol*/
 void SSD_SetValue(tSSD ssd, tSSD_Symbol ssd_symbol);

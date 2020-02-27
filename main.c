@@ -7,6 +7,11 @@
 #include "Port.h"
 #include "SW.h"
 #include "SSD.h"
+#include "VC.h"
+#include "Display.h"
+#include "TIMER_1.h"
+#include "Timer.h"
+#include"Motor.h"
 #define _XTAL_FREQ 8000000
 
 // PIC16F877A Configuration Bit Settings
@@ -26,19 +31,69 @@
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
+volatile uint8 ISR_FLAG;
 
-void main(void) {
+
+int main(void) {
     
-    SSD_Init(SSD_FIRST);
-    SSD_Init(SSD_SECONED);
-    SSD_Init(SSD_THIRD);
+   
+    
+    
+    ISR_FLAG = 0;
+    VC_Init(Mid_speed);
+    TMR0_Init();
+    TMR0_Start();
+    TMR1_Init();
+    DISP_Init();
+    SW_Init();
+   
+   //test code
+    GPIO_InitPortPin(GPIO_PORTC_CONTROL,GPIO_PIN_4 ,GPIO_OUT);
+    GPIO_WritePortPin(GPIO_PORTC_DATA, GPIO_PIN_4,0);
+    //end of test code
     
     while(1)
     {
-      SSD_Update();
-      SSD_SetValue(SSD_SECONED, SSD_Mid);
+        if(ISR_FLAG)
+        {
+            //Test code
+            GPIO_TogglePortPin(GPIO_PORTC_DATA, GPIO_PIN_4);
+            //tasks
+            SSD_Update();
+            SW_Update();
+            DISP_Update();
+            VC_update();
+            MOT_Update();
+            ISR_FLAG = 0;
+        }
     }
     
-    
+ 
+   /* GPIO_InitPortPin(LED_4_PORT_CR, LED_4_PIN, GPIO_OUT);
+   // GPIO_WritePortPin(LED_4_PORT_DR,LED_4_PIN,0) ;
+    TMR0_Init();
+    TMR1_Init();
+    MOT_Init(Mid_speed);
+    GLOBAL_INTERRUPT_ENABLE;
+    TMR0_Start();
+    while(1){}*/
 }
 
+void __interrupt() Generic_ISR()
+{
+    /* if timer1 ISR
+     */
+    if(TMR1_CheckOverflow())
+    {
+        TMR1_ISR();
+    }
+    
+     
+     /*if timer0 ISR
+     */
+    if(TMR0_CheckOverFlow())
+    {
+        TMR0_ISR();
+    }
+    
+}  
